@@ -241,3 +241,68 @@ using namespace std;
     
 //     return 0;
 // }
+// int main()
+// {
+//     const int m=5;
+//     const int n=4;
+//     int A[m]={1,2,3,4,5};
+//     int B[n]={10,9,8,7};
+//     int C[m+n];
+//     for (int i = 0; i < n-1; i++)
+//     {
+//         for (int j = 0; j < n-i-1; j++)
+//         {
+//             if(B[j]>B[j+1])
+//             {
+//                 int temp=B[j];
+//                 B[j]=B[j+1];
+//                 B[j+1]=temp;
+//             }
+//         }
+//     }
+//     int j=0,k=0,i=0;
+
+//        while (j<m)
+//        {
+//         C[i]=A[j];
+//         j++;
+//         i++;
+//        }
+//        i=m;
+//        while (k<n)
+//        {
+//         C[i]=B[k];
+//         k++;
+//         i++;
+//        }
+   
+    
+//     return 0;
+// }
+// int main()
+// { 
+//    const int m=5;
+//    const int n=4;
+//    int A[m]={1,2,3,4,5};
+//    int B[n]={10,9,8,7};
+//    int C[m+n];
+//    int i=0,k=0;
+//    while (i<m )
+//    {
+//         C[i]=A[k];
+//         i++;
+//         k++;
+//    }
+//    k=n-1;
+//    while (i<m+n)
+//    {
+//     C[i]=B[k];
+//     k--;
+//     i++;
+//    }
+   
+
+
+   
+//     return 0;
+// }
