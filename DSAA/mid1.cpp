@@ -300,9 +300,94 @@ using namespace std;
 //     k--;
 //     i++;
 //    }
+//     return 0;
+// }
+// class node
+// {
+//   public:
+//   node* next;
+//   node* prev;
+//   int data;
+// };
+// void nigger(node *l,int sp,int ep)
+// {
+//     int i=1;
+//     node* first=l;
+//     node* last=l;
+//  while (i!=sp)
+//  {
+//     first=first->next;
+//     i++;
+//  }
+//  i=0;
+// while (i!=ep )
+// {
+//     last=last->next;
+//     i++;
+// }
+// i=sp;
+// for(int k=sp;k<=(sp+ep)/2;k++)
+// {
+//     int temp=first->data;
+//     first->data=last->data;
+//     last->data=temp;
+//     first=first->next;
+//     last=last->prev;
+// }
+// }
+// int main()
+// {
+//    node *n1=new node;
+//    node *n2=new node;
+//    node *n3=new node;
+//    node *n4=new node;
+//    node *n5=new node;
+//    n1->data=1;
+//    n1->next=n2;
+//    n1->prev=nullptr;
+//    n2->data=2;
+//    n2->next=n3;
+//    n2->prev=n1;
+//    n3->data=3;
+//    n3->next=n4;
+//    n3->prev=n2;
+//    n4->data=4;
+//    n4->next=n5;
+//    n4->prev=n3;
+//    n5->data=5;
+//    n5->next=nullptr;
+//    n5->prev=n4;
+//    node *head=n1;
+//    int sp=1;
+//    int ep=3;
+    
+//    nigger(head,sp,ep);
+
+//    for (int i = 1; i <= 5; i++)
+//    {
+//     cout<<head->data<<endl;
+//     head=head->next;
+//    }
    
-
-
+//     return 0;
+// }
+// int main()
+// {
+//     const int m=3;
+//     const int n=3;
+//     int i=0;
+//     int j=0;
+//    int arr[3][3]={{5,3,1},{5,2,1},{8,6,3}};
+//    for (int k = 0; k < (m+n)-1; k++)
+//    {
+//     for (int l = 0; l <(m+n)-k-1 ; l++)
+//     {    
+//      if (arr[i][l]>arr[i][l+1])
+//      {
+        
+//      }
+//      }
+//     }
    
 //     return 0;
 // }
