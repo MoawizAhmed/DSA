@@ -36,21 +36,22 @@ int main()
     //     arr[minindex]=temp;
     // }
     
-    //insertion sort
+    //insertion sort using temp variable
 
-    // for (int i = 1; i < n; i++)
-    // {
-    //     int key=arr[i];
-    //     int j=i-1;
-    //     while (j>=0 && arr[j]>key)
-    //     {
-    //         int temp=arr[j];
-    //         arr[j]=arr[key];
-    //         arr[key]=temp;
-    //         j--;
-    //     }
-    // }
-    
+        // for (int i = 1; i < n; i++)
+        // {
+        //     int key = arr[i];
+        //     int j = i - 1;
+        
+        //     while (j >= 0 && arr[j] > key)
+        //     {
+        //         arr[j + 1] = arr[j];
+        //         j--;
+        //     }
+        
+        //     arr[j + 1] = key;
+        // }
+            
     //shell sort
 
     //  for (int i = n/2; i >0 ; i/=2)
