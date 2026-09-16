@@ -1,29 +1,3 @@
-/*You are required to implement a Turn-Based Battle Simulator game using Doubly Linked
-Lists where each node contains a Combatant object with properties like name, health points
-(1-70), both inclusive and attack power (1 to 5), both inclusive. This game simulates a classic
-RPG-style battle between a player’s party of heroes and a team of enemies. The core challenge
-involves managing two teams - one for the hero’s team and another for the enemy team.
-The hero’s team should be initialized with five heroes. The enemy team should contain five
-enemies in this sequence. The battle follows a structured turn based sequence where the player
-hero always attacks first in each round, followed by the enemy counterattack.
-Any member of a team can attack any opponent. During each turn, the program will first ask the
-player to choose an attacker (by name or position) and then select a target from the opponent’s
-team (also by name or position). The attacker and target must exist in their respective teams. Once
-attacker is chosen, the attacker will strike on opponent and the opponent’s health will be reduced
-by:
-Damage = Attack Power × Random Value (where the random value is between 1 and 3,
-inclusive).
-If any combatant’s health reaches zero or below, they are immediately removed from their team.
-After every turn, only the names of the remaining team members from both sides will be displayed.
-(do not display health points and attack power of combatant while playing the game).
-The winning conditions are based on both survival and strength. If one team is completely
-eliminated, the other team wins instantly. However, if the combat lasts until a fixed number of
-rounds (10 Minimum), the winner is decided by comparing the total health points of the remaining
-members. If both teams have the same total health, the match ends in a draw. At the end of the
-game, display the names, health points, and attack power of the surviving members of the winning
-
-team, or in the case of a draw, display the remaining members of both teams, with remaining health
-points and attack power.*/#include <iostream>
 #include <iostream>
 #include <string>
 #include <cstdlib>

@@ -1,21 +1,3 @@
-/*
-You are developing an Emergency Room Game in which patients arrive at a hospital and wait to
-be treated. Each patient has a unique Patient ID and a severity level, where 1 represents Critical,
-2 represents Serious, and 3 represents Normal. Patients normally arrive and wait in the order in
-which they enter the hospital; however, when the doctor is ready to treat a patient, a Critical patient
-must always be treated before a Serious or Normal patient, and a Serious patient must always be
-treated before a Normal patient. If two or more patients have the same severity level, the patient
-who arrived first must be treated first.
-The input consists of a sequence of ARRIVE ID SEVERITY and TREAT operations. When an
-ARRIVE operation is encountered, the patient must be added to the appropriate queue, and when
-a TREAT operation is encountered, the patient with the highest severity must be removed
-according to the above rules. You are not allowed to use a priority queue; instead, implement
-the solution using normal queues implemented with an array. You may use multiple queues to
-maintain the required priority and FIFO order.
-
-At the end, display the treatment order, the total number of patients treated, the total number of
-patients remaining, and the number of Critical, Serious, and Normal patients still waiting. Do not
-use STL queue, priority_queue, vector, deque, or any other built-in data structure.*/
 #include <iostream>
 #include <string>
 

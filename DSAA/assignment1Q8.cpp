@@ -1,16 +1,3 @@
-/*You are developing a game called Undo Battle in which a player moves along a one-dimensional
-path starting from position 0. The player can perform four types of commands: R moves the player
-one position to the right, L moves the player one position to the left, J moves the player two
-positions to the right, and B performs an Undo operation. Every valid movement (R, L, or J) must
-be stored in a stack so that the most recent movement can be undone. When the player performs
-B, the most recent valid movement must be removed from the stack and the player must return to
-the position before that movement. An Undo operation itself must not be stored in the stack. A
-movement that would take the player to a position less than 0 is considered invalid and must not
-be stored in the stack. If the player requests an Undo when the stack is empty, nothing should
-happen. You are required to implement the stack using a linked list and process n commands given
-as input. At the end, display the player's final position, the total number of successful movements,
-the total number of successful Undo operations, and the remaining elements in the stack. Do not
-use STL stack or any other built-in stack data structure.*/
 #include <iostream>
 
 using namespace std;

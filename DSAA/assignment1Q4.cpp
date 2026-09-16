@@ -1,16 +1,3 @@
-/*A KFC branch manages its delivery riders in a circular way, where each rider is connected to the
-next rider, and the last rider points back to the first rider. This allows delivery orders to be assigned
-to riders continuously in a circular manner.
-Each rider node should contain Rider ID, Rider Name, and Number of Assigned Orders. The
-system should support insertion at the beginning, insertion at the end, insertion at a specific
-position, deletion from the beginning, deletion from the end, deletion from a specific
-
-position, searching for a rider, updating rider information, displaying all riders, counting
-the total riders, and traversing the riders starting from a selected rider.
-The implementation must correctly maintain the circular connection after every insertion and
-deletion, handle an empty list and invalid positions, and must not use STL containers such as
-list or vector.
-*/
 #include <iostream>
 using namespace std;
 

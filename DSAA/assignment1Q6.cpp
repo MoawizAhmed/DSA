@@ -1,24 +1,3 @@
-/*
-You are building a sophisticated music playlist manager using a singly linked list where each node
-contains a Song object. Your task is to implement a complete C++ program that can store songs
-in a linked list and perform all fundamental operations—insertion at any position, deletion at any
-position, and searching.
-The Song class contains the song's title, genre (pop, rock, jazz, classical, or electronic), duration
-in seconds, and a special Boolean flag indicating if the song contains explicit content.
-Explicit songs are marked with the flag set to true. Explicit songs cannot be deleted directly. They
-first require not to be explicit, then should be deleted.
-Songs of the same genre cannot be placed next to each other in the playlist. When you try to insert
-a song at a position where it would be adjacent to another song of the same genre, your
-
-implementation must automatically find the next valid position where this genre conflict doesn't
-occur.
-The total duration of any three consecutive songs in the playlist cannot exceed 10 minutes
-(600 seconds). When adding a new song, if placing it at the desired position would violate this
-duration limit with its neighbors, your code must find an alternative position that maintains
-balanced listening sessions.
-Every time you perform 3 operations on the playlist (any combination of insert, delete, or search),
-above constraints must be satisfied.
-*/
 #include <iostream>
 using namespace std;
 

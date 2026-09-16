@@ -1,12 +1,21 @@
-   for (int i = n; i > 1; i = i * 10 / 13)
-{
-    for (int j = 0; j + i < n; j++)
-    {
-        if (arr[j] > arr[j + i])
-        {
-            int temp = arr[j];
-            arr[j] = arr[j + i];
-            arr[j + i] = temp;
-        }
-    }
-}
+  l.display();
+//   l.insertatend(10);
+//   l.display();
+//   l.insertatend(20);
+//   l.display();
+//   l.insertatstart(5);
+//   l.display();
+//   l.insertafter(1,15);
+//   l.display();
+//   int searched=l.search(15);
+//   cout<<"searched index: "<<searched<<endl;
+//   int counted=l.countnodes();
+//   cout<<"Total count of nodes: "<<counted<<endl;
+//   int sum=l.sumofnodes();
+//   cout<<"Sum of nodes: "<<sum<<endl;
+//   l.deletefromstart();
+//   l.display();
+//   l.deleteafter(0);
+//   l.display();
+//   l.deletefromend();
+//   l.display();
