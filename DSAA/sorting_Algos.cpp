@@ -71,19 +71,28 @@ int main()
      
     //comb sort
 
-    for (int i = n; i >= 1; i /= 1.3)
-{
-    for (int j = 0; j + i < n; j++)
+  bool swapped=true;
+  int gap=n;
+  while (gap > 1 || swapped)
+  {
+    gap/=1.3;
+    if (gap<1)
     {
-        if (arr[j] > arr[j + i])
+        gap=1;
+    }
+    swapped=false;
+    for (int i = 0; i+gap < n; i++)
+    {
+        if (arr[i]>arr[i+gap])
         {
-            int temp = arr[j];
-            arr[j] = arr[j + i];
-            arr[j + i] = temp;
+            int temp=arr[i];
+            arr[i]=arr[i+gap];
+            arr[i+gap]=temp;
+            swapped=true;
         }
     }
-}
-
+  }
+  
 
    for (int i = 0; i < n; i++)
    {
