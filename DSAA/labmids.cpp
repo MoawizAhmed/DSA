@@ -391,332 +391,867 @@
 //     adding(l1.head,l2.head);
 // }
 
-  class node
-  {
-  public:
-  node* next;
-  int data;
-  node(int val)
-  {
-    data=val;
-  }
-  };
-  class linkedlist
-  {
-    private:
-    node* head;
-  public:
-  linkedlist()
-  {
-    head=nullptr;
-  }
-  node* gethead()
-  {
-    return head;
-  }
-  void insert(int val)
-  {
-    node* newnode=new node(val);
-    node* curr=head;
-    if (head==nullptr)
-    {
-     head=newnode;
-     head->next=nullptr;
-     return;
-    }
-    while (curr->next!=nullptr)
-    {
-        curr=curr->next;
-    }
-    curr->next=newnode;
-    newnode->next=nullptr;
-  }
-  void reverse()
-  {
-   node* prev=nullptr;
-   node* curr=head;
-   node* next=nullptr;
-   while (curr!=nullptr)
+//   class node
+//   {
+//   public:
+//   node* next;
+//   int data;
+//   node(int val)
+//   {
+//     data=val;
+//   }
+//   };
+//   class linkedlist
+//   {
+//     private:
+//     node* head;
+//   public:
+//   linkedlist()
+//   {
+//     head=nullptr;
+//   }
+//   node* gethead()
+//   {
+//     return head;
+//   }
+//   void insert(int val)
+//   {
+//     node* newnode=new node(val);
+//     node* curr=head;
+//     if (head==nullptr)
+//     {
+//      head=newnode;
+//      head->next=nullptr;
+//      return;
+//     }
+//     while (curr->next!=nullptr)
+//     {
+//         curr=curr->next;
+//     }
+//     curr->next=newnode;
+//     newnode->next=nullptr;
+//   }
+//   void reverse()
+//   {
+//    node* prev=nullptr;
+//    node* curr=head;
+//    node* next=nullptr;
+//    while (curr!=nullptr)
+//    {
+//      next=curr->next;
+//      curr->next=prev;
+//      prev=curr;
+//      curr=next;
+//    }
+//    head=prev;
+//   }
+//   void middle()
+//   {
+//     node* fast=head;
+//     node* slow=head;
+//     while (fast!=nullptr && fast->next!=nullptr)
+//     {
+//         fast=fast->next->next;
+//         slow=slow->next;
+//     }
+//     cout<<slow->data<<endl;
+//   }
+//   //floyd's cycle
+//   bool cycle()
+//   {
+//     node* fast=head;
+//     node* slow=head;
+//     while (fast!=nullptr && fast->next!=nullptr)
+//     {
+//         fast=fast->next->next;
+//         slow=slow->next;
+//     }
+//     if (fast==slow)
+//     {
+//      return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+    
+//   }
+//   //floyd's cycle 2
+//   void cycle2()
+//   {
+//       node* fast=head;
+//     node* slow=head;
+//     while (fast!=nullptr && fast->next!=nullptr)
+//     {
+//         fast=fast->next->next;
+//         slow=slow->next;
+//     if (fast==slow)
+//     {
+//      break;
+//     }
+//     }
+//     if (fast==nullptr || fast->next==nullptr)
+//     {
+//         cout<<"no cycle"<<endl;
+//     }
+//     slow=head;
+//     while (slow!=fast)
+//     {
+//         slow=slow->next;
+//         fast=fast->next;
+//     }
+    
+//   }
+
+//   void display()
+//   {
+//     node* curr=head;
+//     while (curr!=nullptr)
+//     {
+//         cout<<curr->data<<endl;
+//         curr=curr->next;
+//     }
+//   }
+//   void deleteanode(int val)
+//   {
+//    node* curr=head;
+//    if (head == nullptr) return;
+//    if (head->data==val)
+//    {
+//      node* temp=head->next;
+//      delete head;
+//      head=temp;
+//      return;
+//    }
+   
+//    while (curr->next != nullptr && curr->next->data!=val)
+//    {
+//     curr=curr->next;
+//    }
+   
+//    node* valtemp=curr->next;
+//    node* next=curr->next->next;
+//    curr->next=next;
+//    delete valtemp;
+//   }
+//   bool ispallendrome()
+//   {
+//     int counter=0;
+//     node* slow=head;
+//     node* fast=head;
+//     while (fast!=nullptr && fast->next!=nullptr)
+//     {
+//         fast=fast->next->next;
+//         slow=slow->next;
+//         counter++;
+//     }
+//     node* mid=slow;
+//     slow=head;
+
+//    node* prev=nullptr;
+//    node* curr=mid;
+//    node* next=nullptr;
+//    while (curr!=nullptr)
+//    {
+//      next=curr->next;
+//      curr->next=prev;
+//      prev=curr;
+//      curr=next;
+//    }
+//    mid=prev;
+//    for (int i = 0; i < counter; i++)
+//    {
+//      if (mid->data!=slow->data)
+//      {
+//         return false;
+//      }
+//       mid = mid->next;
+//     slow = slow->next;
+//    }
+//    return true;
+//   }
+//   void sort()
+//   {
+//     node* curr;
+//     node* temp;
+//     for (curr=head ; curr->next != nullptr; curr=curr->next)
+//     {
+//         for (temp = curr->next; temp->next != nullptr ; temp=temp->next)
+//         {
+//             if (temp->data > temp->next->data)
+//             {
+//               int hello=temp->data;
+//               temp->data=temp->next->data;
+//               temp->next->data=hello;
+//             }
+//         }
+//     }
+//   }
+//   void reverse2(int n1,int n2)
+//   {
+//     int counter1=0;
+//     int counter2=0;
+//     node* start=head;
+//     node* end=head;
+//     while (counter1!=n1)
+//     {
+//         start=start->next;
+//         counter1++;
+//     }
+//     while (counter2!=n2)
+//     {
+//         end=end->next;
+//         counter2++;
+//     }
+//     node* prev=nullptr;
+//     node* curr=start;
+//     node* next;
+//     while (curr!=end)
+//     {
+//         next=curr->next;
+//         curr->next=prev;
+//         prev=curr;
+//         curr=next;
+//     }
+//     start=prev;
+//   }
+// };
+// node* intersection(node* head1,node* head2)
+// {
+//   node* curr1=head1;
+//   node* curr2=head2;
+//   while (curr1!=curr2)
+//   {
+
+//     curr1=curr1->next;
+//     if (curr1==nullptr)
+//     {
+//         curr1=head2;
+//     }
+    
+//     curr2=curr2->next;
+//     if (curr2==nullptr)
+//     {
+//         curr2=head1;
+//     }
+//   }
+//   return curr1;
+// }
+// node* merge(node* head1, node* head2)
+// {
+//     node* newhead = nullptr;
+//     node* currnew = nullptr;
+//     node* curr1 = head1;
+//     node* curr2 = head2;
+
+   
+//     while (curr1 != nullptr && curr2 != nullptr)
+//     {
+//         if (curr1->data < curr2->data)
+//         {
+         
+//             node* temp = new node(curr1->data);
+
+//             if (newhead == nullptr)
+//             {
+//                 newhead = temp;
+//                 currnew = temp;
+//             }
+//             else
+//             {
+//                 currnew->next = temp;
+
+            
+//                 currnew = currnew->next;
+//             }
+
+//             curr1 = curr1->next;
+//         }
+//         else
+//         {
+           
+//             node* temp = new node(curr2->data);
+
+//             if (newhead == nullptr)
+//             {
+//                 newhead = temp;
+//                 currnew = temp;
+//             }
+//             else
+//             {
+//                 currnew->next = temp;
+
+               
+//                 currnew = currnew->next;
+//             }
+
+//             curr2 = curr2->next;
+//         }
+//     }
+
+//     while (curr1 != nullptr)
+//     {
+//         node* temp = new node(curr1->data);
+//         currnew->next = temp;
+//         currnew = currnew->next;
+//         curr1 = curr1->next;
+//     }
+
+//     while (curr2 != nullptr)
+//     {
+//         node* temp = new node(curr2->data);
+//         currnew->next = temp;
+//         currnew = currnew->next;
+//         curr2 = curr2->next;
+//     }
+//     return newhead;
+// }
+//   int main()
+//   {
+//    linkedlist l;
+//    l.insert(1);
+//    l.insert(2);
+//    l.insert(3);
+//    l.insert(2);
+//    l.insert(1);
+//    l.reverse();
+//    l.display();
+//    l.middle();
+//    cout<<l.ispallendrome()<<endl;
+//     return 0;
+//   }
+
+  //  doubly reverse
+//   void reverse()
+// {
+//     node* curr=head;
+//     node* temp=nullptr;
+
+//     while (curr!=nullptr)
+//     {
+//         temp=curr->prev;
+//         curr->prev=curr->next;
+//         curr->next=temp;
+
+//         curr=curr->prev;
+//     }
+
+//     if (temp!=nullptr)
+//     {
+//         head=temp->prev;
+//     }
+// }
+
+//================S T A C K===============
+
+ class stack
+ {
+   private:
+
+   int size;
+   int top;
+   int *arr;
+
+   public:
+  
+   stack(int size)
    {
-     next=curr->next;
-     curr->next=prev;
-     prev=curr;
-     curr=next;
-   }
-   head=prev;
-  }
-  void middle()
-  {
-    node* fast=head;
-    node* slow=head;
-    while (fast!=nullptr && fast->next!=nullptr)
-    {
-        fast=fast->next->next;
-        slow=slow->next;
-    }
-    cout<<slow->data<<endl;
-  }
-  //floyd's cycle
-  bool cycle()
-  {
-    node* fast=head;
-    node* slow=head;
-    while (fast!=nullptr && fast->next!=nullptr)
-    {
-        fast=fast->next->next;
-        slow=slow->next;
-    }
-    if (fast==slow)
-    {
+     this->size=size;
+   top=-1;
+   arr=new int[size];
+ }
+ stack()
+ {
+  top=-1;
+ }
+ int gettop(){return top;}
+ void setsize(int size)
+ {
+  this->size=size;
+  arr=new int[size];
+ }
+ bool isempty()
+ {
+   if (top==-1)
+   {
      return true;
+   }
+   else
+   {
+     return false;
+   }
+ }
+ void push(int val)
+ {
+  if (top==size-1)
+  {
+   cout<<"Stack overflow"<<endl;
+   return;
+  }
+  arr[++top]=val;
+ }
+ int pop()
+ {
+   if (top==-1)
+   {
+     cout<<"Stack underflow"<<endl;
+     return -1;
+   }
+   return arr[top];
+   top--;
+ }
+ char peek()
+ {
+   if (top==-1)
+   {
+     cout<<"No elements"<<endl;
+     return -1;
+   }
+   return arr[top];
+ }
+ void display()
+ {
+   for (int i = 0; i <= top; i++)
+   {
+     cout<<arr[i]<<endl;
+   }
+ }
+ void reverse()
+ {
+  int s=top/2;
+   int t=top;
+  for (int i = 0; i < s; i++)
+  {
+   int temp=arr[i];
+   arr[i]=arr[t];
+   arr[t]=temp;
+   t--;
+  }
+   }
+   bool isfull()
+   {
+    if (top==size)
+    {
+      return true;
     }
     else
     {
-        return false;
+      return false;
     }
+   }
+ };
+//  bool balancedparanthesis(string par) 
+//   {
+//         if (par=="")
+//       {
+//           cout<<"empty"<<endl;
+//         return false;
+//       }
+//    int length=par.length();
+//    stack s(length);
+//    for (int i = 0; i < length; i++)
+//    {
+//     char c=par[i];
+//     if (c=='{' || c=='(' || c=='[')
+//     {
+//       s.push(c);
+//     }
+//     else
+//     {
+//       if (c!='}' && c!=')' && c!=']')
+//       {
+//         cout<<"not brackets"<<endl;
+//         return false;
+//       }
+//          if (s.isempty())
+//       {
+//        return false;
+//       }
+//       char nig=s.peek();
+//       s.pop();
+//       if (nig=='{')
+//       {
+//         if (c!='}')
+//         {
+//           return false;
+//         }
+//       }
+//       else if (nig=='(')
+//       {
+//         if (c!=')')
+//         {
+//           return false;
+//         }
+//       }
+//       else if (nig=='[')
+//       {
+//          if (c!=']')
+//         {
+//           return false;
+//         }
+//       }
+//     }
+//     }
+//    return s.isempty();
+//   }
+//   void deciamaltobinary(int dec)
+//   {
+//    stack s(10);
+//    while(dec!=0)
+//    {
+//     s.push(dec%2);
+//    dec=dec/2;
+//    }
+//    s.reverse();
+//    s.display();
+//   }
+  
+// int precedence(char op)
+// {
+//     if (op == '+' || op == '-')
+//         return 1;
+
+//     if (op == '*' || op == '/')
+//         return 2;
+
+//     if (op == '^')
+//         return 3;
+
+//     return 0;
+// }
+
+// bool isOperator(char ch)
+// {
+//     return ch == '+' || ch == '-' ||
+//            ch == '*' || ch == '/' ||
+//            ch == '^';
+// }
+
+// string infixToPostfix(string infix)
+// {
+//     char stack[100];
+//     int top = -1;
+//     string postfix = "";
+
+//     for (int i = 0; i < infix.length(); i++)
+//     {
+//         char ch = infix[i];
+
+//         if ((ch >= 'A' && ch <= 'Z') ||
+//             (ch >= 'a' && ch <= 'z') ||
+//             (ch >= '0' && ch <= '9'))
+//         {
+//             postfix += ch;
+//         }
+
+//         else if (ch == '(')
+//         {
+//             stack[++top] = ch;
+//         }
+
+//         else if (ch == ')')
+//         {
+//             while (top >= 0 && stack[top] != '(')
+//             {
+//                 postfix += stack[top--];
+//             }
+
+//             if (top >= 0)
+//                 top--;
+//         }
+
+//         else if (isOperator(ch))
+//         {
+//             while (top >= 0 &&
+//                    stack[top] != '(' &&
+//                    (precedence(stack[top]) > precedence(ch) ||
+//                    (precedence(stack[top]) == precedence(ch) && ch != '^')))
+//             {
+//                 postfix += stack[top--];
+//             }
+
+//             stack[++top] = ch;
+//         }
+//     }
+
+//     while (top >= 0)
+//     {
+//         postfix += stack[top--];
+//     }
+
+//     return postfix;
+// }
+// string infixToPrefix(string infix)
+// {
+//     char stack[100];
+//     int top = -1;
+//     string postfix = "";
+
+//     // Reverse infix and swap brackets
+//     for (int i = infix.length() - 1; i >= 0; i--)
+//     {
+//         char ch = infix[i];
+
+//         if (ch == '(')
+//             ch = ')';
+//         else if (ch == ')')
+//             ch = '(';
+
+//         if ((ch >= 'A' && ch <= 'Z') ||
+//             (ch >= 'a' && ch <= 'z') ||
+//             (ch >= '0' && ch <= '9'))
+//         {
+//             postfix += ch;
+//         }
+
+//         else if (ch == '(')
+//         {
+//             stack[++top] = ch;
+//         }
+
+//         else if (ch == ')')
+//         {
+//             while (top >= 0 && stack[top] != '(')
+//             {
+//                 postfix += stack[top--];
+//             }
+
+//             if (top >= 0)
+//                 top--;
+//         }
+
+//         else if (isOperator(ch))
+//         {
+//             while (top >= 0 &&
+//                    stack[top] != '(' &&
+//                    (precedence(stack[top]) > precedence(ch) ||
+//                    (precedence(stack[top]) == precedence(ch) && ch == '^')))
+//             {
+//                 postfix += stack[top--];
+//             }
+
+//             stack[++top] = ch;
+//         }
+//     }
+
+//     while (top >= 0)
+//     {
+//         postfix += stack[top--];
+//     }
+
+//     // Reverse postfix to get prefix
+//     string prefix = "";
+
+//     for (int i = postfix.length() - 1; i >= 0; i--)
+//     {
+//         prefix += postfix[i];
+//     }
+
+//     return prefix;
+// }
+// int main()
+// {
+//   // stack s(4);
+//   // s.push('h');
+//   // s.push('e');
+//   // s.push('l');
+//   // s.push('l');
+//   // s.reverse();
+//   // s.display();
+// //  deciamaltobinary(4);
+// cout<<infixToPostfix("(5+6)")<<endl;;
+//   return 0;
+// }
+
+//=========Q U E U E==========
+
+// class queue
+// {
+//   private:
+//   int front;
+//   int rear;
+//   int size;
+//   int *arr;
+//   public:
+//   queue(int size)
+//   {
+//     this->size=size;
+//     arr=new int[size];
+//     rear=0;
+//     front=0;
+//   }
+//   int getsize()
+//   {
+//     return size;
+//   }
+//   int getfront(){return front;}
+//   int getrear(){return rear;}
+//   void enqueue(int val)
+//   {
+//     if (rear==size)
+//     {
+//       cout<<"overflow"<<endl;
+//       return;
+//     }
+//    arr[rear++]=val;
+//   }
+//   void dequeue()
+//   {
+//     if (rear==front)
+//     {
+//       cout<<"empty"<<endl;
+//       return;
+//     }
+//     front++;
+//   }
+//   int frontt()
+//   {
+//     return arr[front];
+//   }
+//   int peek()
+//   {
+//     return arr[rear-1];
+//   }
+//   void display()
+//   {
+//     for (int i = front; i < rear; i++)
+//     {
+//       cout<<arr[i];
+//     }
+//     cout<<endl;
+//   }
+//   void reverse()
+//   {
+//     int s=rear-1;
+//     for (int i = front; i < (front + rear)/2; i++)
+//     {
+//       int temp=arr[i];
+//       arr[i]=arr[s];
+//       arr[s]=temp;
+//       s--;
+//     }
     
-  }
-  //floyd's cycle 2
-  void cycle2()
-  {
-      node* fast=head;
-    node* slow=head;
-    while (fast!=nullptr && fast->next!=nullptr)
-    {
-        fast=fast->next->next;
-        slow=slow->next;
-    if (fast==slow)
-    {
-     break;
-    }
-    }
-    if (fast==nullptr || fast->next==nullptr)
-    {
-        cout<<"no cycle"<<endl;
-    }
-    slow=head;
-    while (slow!=fast)
-    {
-        slow=slow->next;
-        fast=fast->next;
-    }
-    
-  }
+//   }
 
-  void display()
-  {
-    node* curr=head;
-    while (curr!=nullptr)
-    {
-        cout<<curr->data<<endl;
-        curr=curr->next;
-    }
-  }
-  void deleteanode(int val)
-  {
-   node* curr=head;
-   if (head == nullptr) return;
-   if (head->data==val)
-   {
-     node* temp=head->next;
-     delete head;
-     head=temp;
-     return;
-   }
-   
-   while (curr->next != nullptr && curr->next->data!=val)
-   {
-    curr=curr->next;
-   }
-   
-   node* valtemp=curr->next;
-   node* next=curr->next->next;
-   curr->next=next;
-   delete valtemp;
-  }
-  bool ispallendrome()
-  {
-    int counter=0;
-    node* slow=head;
-    node* fast=head;
-    while (fast!=nullptr && fast->next!=nullptr)
-    {
-        fast=fast->next->next;
-        slow=slow->next;
-        counter++;
-    }
-    node* mid=slow;
-    slow=head;
+// };
+// class circularqueue
+// {
+//   private:
+//   int front=0;
+//   int rear=0;
+//   int size;
+//   int *arr;
+//   int count=0;
+//    public:
+//    circularqueue(int size)
+//    {
+//      this->size=size;
+//     arr=new int[size];
+//     front=0;
+//     rear=0;
+//   }
+//   void enqueue(int val)
+//    {
+//    if (count==size)
+//    {
+//     cout<<"overflow"<<endl;
+//     return;
+//    }
+//    arr[rear]=val;
+//    rear=(rear+1)%size;
+//    count++;
+//   }
+//   void dequeue()
+//   {
+//     if (rear==front)
+//     {
+//       cout<<"empty"<<endl;
+//       return;
+//     }
+//     front=(front+1)%size;
+//     count--;
+//    }
+// int frontt()
+//   {
+//     return arr[front];
+//   }
+//   int peek()
+//   {
+//     return arr[(rear-1+size)%size];
+//   }
+//    void display()
+//   {
+//     for (int i = front; i < rear; i++)
+//     {
+//       cout<<arr[(front + i) % size];
+//     }
+//     cout<<endl;
+//   } 
+// };
+// void decimaltobinary(int n)
+// {
+//  queue q(10);
+//  while (n!=0)
+//  {
+//    q.enqueue(n%2);
+//    n/=2;
+//  }
+//  q.reverse();
+//  q.display();
+// }
+// int main()
+// {
 
-   node* prev=nullptr;
-   node* curr=mid;
-   node* next=nullptr;
-   while (curr!=nullptr)
-   {
-     next=curr->next;
-     curr->next=prev;
-     prev=curr;
-     curr=next;
-   }
-   mid=prev;
-   for (int i = 0; i < counter; i++)
-   {
-     if (mid->data!=slow->data)
-     {
-        return false;
-     }
-      mid = mid->next;
-    slow = slow->next;
-   }
-   return true;
-  }
-  void sort()
-  {
-    node* curr;
-    node* temp;
-    for (curr=head ; curr->next != nullptr; curr=curr->next)
-    {
-        for (temp = curr->next; temp->next != nullptr ; temp=temp->next)
-        {
-            if (temp->data > temp->next->data)
-            {
-              int hello=temp->data;
-              temp->data=temp->next->data;
-              temp->next->data=hello;
-            }
-        }
-    }
-  }
-  void reverse2(int n1,int n2)
-  {
-    int counter1=0;
-    int counter2=0;
-    node* start=head;
-    node* end=head;
-    while (counter1!=n1)
-    {
-        start=start->next;
-        counter1++;
-    }
-    while (counter2!=n2)
-    {
-        end=end->next;
-        counter2++;
-    }
-    node* prev=nullptr;
-    node* curr=start;
-    node* next;
-    while (curr!=end)
-    {
-        next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
-    }
-    start=prev;
-  }
-};
-node* intersection(node* head1,node* head2)
-{
-  node* curr1=head1;
-  node* curr2=head2;
-  while (curr1!=curr2)
-  {
+//   // queue q(3);
+//   // q.enqueue(1);
+//   // q.enqueue(2);
+//   // q.enqueue(3);
+//   // q.reverse();
+//   // q.display();
+//    decimaltobinary(4);
+// }
 
-    curr1=curr1->next;
-    if (curr1==nullptr)
-    {
-        curr1=head2;
-    }
-    
-    curr2=curr2->next;
-    if (curr2==nullptr)
-    {
-        curr2=head1;
-    }
-  }
-  return curr1;
-}
-node* merge(node* head1, node* head2)
-{
-    node* newhead = nullptr;
-    node* currnew = nullptr;
-    node* curr1 = head1;
-    node* curr2 = head2;
-
-   
-    while (curr1 != nullptr && curr2 != nullptr)
-    {
-        if (curr1->data < curr2->data)
-        {
-         
-            node* temp = new node(curr1->data);
-
-            if (newhead == nullptr)
-            {
-                newhead = temp;
-                currnew = temp;
-            }
-            else
-            {
-                currnew->next = temp;
-
-            
-                currnew = currnew->next;
-            }
-
-            curr1 = curr1->next;
-        }
-        else
-        {
-           
-            node* temp = new node(curr2->data);
-
-            if (newhead == nullptr)
-            {
-                newhead = temp;
-                currnew = temp;
-            }
-            else
-            {
-                currnew->next = temp;
-
-               
-                currnew = currnew->next;
-            }
-
-            curr2 = curr2->next;
-        }
-    }
-
-    while (curr1 != nullptr)
-    {
-        node* temp = new node(curr1->data);
-        currnew->next = temp;
-        currnew = currnew->next;
-        curr1 = curr1->next;
-    }
-
-    while (curr2 != nullptr)
-    {
-        node* temp = new node(curr2->data);
-        currnew->next = temp;
-        currnew = currnew->next;
-        curr2 = curr2->next;
-    }
-    return newhead;
-}
-  int main()
-  {
-   linkedlist l;
-   l.insert(1);
-   l.insert(2);
-   l.insert(3);
-   l.insert(2);
-   l.insert(1);
-   l.reverse();
-   l.display();
-   l.middle();
-   cout<<l.ispallendrome()<<endl;
-    return 0;
-  }
+//=============S T A C K + Q U E U E===========
+// class queue
+// {
+//   int size;
+//   stack s1;
+//   stack s2;
+//   public:
+//   queue(int val)
+//    {
+//     size=val;
+//     s1.setsize(val);
+//     s2.setsize(val);
+//    }
+//    void enqueue(int val)
+//    {
+//     if (s1.isfull() || s2.isfull())
+//     {
+//       cout<<"The queue is already full";
+//       return;
+//     }
+//     s1.push(val);
+//    }
+//    void dequeue()
+//    {
+//     if (s1.isempty() && s2.isempty())
+//     {
+//       cout<<"it is empty cuh"<<endl;
+//       return;
+//     }
+//     int counter=0;
+//     while (counter!=s1.gettop()+1)
+//     {
+//       s2.push(s1.pop());
+//       counter++;
+//     }
+//     s2.pop();
+//     counter=0;
+//        while (counter!=s2.gettop()+1)
+//     {
+//       s1.push(s2.pop());
+//       counter++;
+//     }
+//    }
+// };
