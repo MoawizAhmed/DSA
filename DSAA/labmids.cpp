@@ -744,156 +744,148 @@
 
 //================S T A C K===============
 
- class stack
- {
-   private:
+//  class stack
+//  {
+//    private:
 
-   int size;
-   int top;
-   int *arr;
+//    int size;
+//    int top;
+//    int *arr;
 
-   public:
+//    public:
   
-   stack(int size)
-   {
-     this->size=size;
-   top=-1;
-   arr=new int[size];
- }
- stack()
- {
-  top=-1;
- }
- int gettop(){return top;}
- void setsize(int size)
- {
-  this->size=size;
-  arr=new int[size];
- }
- bool isempty()
- {
-   if (top==-1)
-   {
-     return true;
-   }
-   else
-   {
-     return false;
-   }
- }
- void push(int val)
- {
-  if (top==size-1)
-  {
-   cout<<"Stack overflow"<<endl;
-   return;
-  }
-  arr[++top]=val;
- }
- int pop()
- {
-   if (top==-1)
-   {
-     cout<<"Stack underflow"<<endl;
-     return -1;
-   }
-   return arr[top];
-   top--;
- }
- char peek()
- {
-   if (top==-1)
-   {
-     cout<<"No elements"<<endl;
-     return -1;
-   }
-   return arr[top];
- }
- void display()
- {
-   for (int i = 0; i <= top; i++)
-   {
-     cout<<arr[i]<<endl;
-   }
- }
- void reverse()
- {
-  int s=top/2;
-   int t=top;
-  for (int i = 0; i < s; i++)
-  {
-   int temp=arr[i];
-   arr[i]=arr[t];
-   arr[t]=temp;
-   t--;
-  }
-   }
-   bool isfull()
-   {
-    if (top==size)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-   }
- };
-//  bool balancedparanthesis(string par) 
-//   {
-//         if (par=="")
-//       {
-//           cout<<"empty"<<endl;
-//         return false;
-//       }
-//    int length=par.length();
-//    stack s(length);
-//    for (int i = 0; i < length; i++)
+//    stack(int size)
 //    {
-//     char c=par[i];
-//     if (c=='{' || c=='(' || c=='[')
+//      this->size=size;
+//    top=-1;
+//    arr=new int[size];
+//  }
+//  stack()
+//  {
+//   top=-1;
+//  }
+//  int gettop(){return top;}
+//  void setsize(int size)
+//  {
+//   this->size=size;
+//   arr=new int[size];
+//  }
+//  bool isempty()
+//  {
+//    if (top==-1)
+//    {
+//      return true;
+//    }
+//    else
+//    {
+//      return false;
+//    }
+//  }
+//  void push(int val)
+//  {
+//   if (top==size-1)
+//   {
+//    cout<<"Stack overflow"<<endl;
+//    return;
+//   }
+//   arr[++top]=val;
+//  }
+//  int pop()
+//  {
+//    if (top==-1)
+//    {
+//      cout<<"Stack underflow"<<endl;
+//      return -1;
+//    }
+//    return arr[top];
+//    top--;
+//  }
+//  char peek()
+//  {
+//    if (top==-1)
+//    {
+//      cout<<"No elements"<<endl;
+//      return -1;
+//    }
+//    return arr[top];
+//  }
+//  void display()
+//  {
+//    for (int i = 0; i <= top; i++)
+//    {
+//      cout<<arr[i]<<endl;
+//    }
+//  }
+//  void reverse()
+//  {
+//   int s=top/2;
+//    int t=top;
+//   for (int i = 0; i < s; i++)
+//   {
+//    int temp=arr[i];
+//    arr[i]=arr[t];
+//    arr[t]=temp;
+//    t--;
+//   }
+//    }
+//    bool isfull()
+//    {
+//     if (top==size)
 //     {
-//       s.push(c);
+//       return true;
 //     }
 //     else
 //     {
-//       if (c!='}' && c!=')' && c!=']')
-//       {
-//         cout<<"not brackets"<<endl;
+//       return false;
+//     }
+//    }
+//  };
+// // bool balancedparanthesis(string par)
+// {
+//     if (par == "")
+//     {
 //         return false;
-//       }
-//          if (s.isempty())
-//       {
-//        return false;
-//       }
-//       char nig=s.peek();
-//       s.pop();
-//       if (nig=='{')
-//       {
-//         if (c!='}')
-//         {
-//           return false;
-//         }
-//       }
-//       else if (nig=='(')
-//       {
-//         if (c!=')')
-//         {
-//           return false;
-//         }
-//       }
-//       else if (nig=='[')
-//       {
-//          if (c!=']')
-//         {
-//           return false;
-//         }
-//       }
 //     }
+
+//     int length = par.length();
+//     stack s(length);
+
+//     for (int i = 0; i < length; i++)
+//     {
+//         char c = par[i];
+
+//         if (c == '{' || c == '(' || c == '[')
+//         {
+//             s.push(c);
+//         }
+//         else if (c == '}' || c == ')' || c == ']')
+//         {
+//             if (s.isempty())
+//             {
+//                 return false;
+//             }
+
+//             char nig = s.pop();
+
+//             if (nig == '{' && c != '}')
+//             {
+//                 return false;
+//             }
+
+//             if (nig == '(' && c != ')')
+//             {
+//                 return false;
+//             }
+
+//             if (nig == '[' && c != ']')
+//             {
+//                 return false;
+//             }
+//         }
 //     }
-//    return s.isempty();
-//   }
+
+//     return s.isempty();
+// }
 //   void deciamaltobinary(int dec)
 //   {
 //    stack s(10);
