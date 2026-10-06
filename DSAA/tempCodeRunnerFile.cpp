@@ -1,1 +1,1 @@
-cout<<interpolationsearch(n,arr,4)<<endl;
+cout<<binaryreversesearch(n,arr,4);
