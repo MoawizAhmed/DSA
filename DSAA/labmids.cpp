@@ -1247,3 +1247,174 @@
 //     }
 //    }
 // };
+void display(int n,int arr[])
+{
+  for (int i = 0; i < n; i++)
+  {
+    cout<<arr[i];
+  }
+}
+void selectionsort(int n,int arr[])
+{
+  for (int i = 0; i < n-1; i++)
+  {
+    int minindex=i;
+    for (int j = i+1; j < n; j++)
+    {
+      if (arr[j] < arr[minindex])
+      {
+        minindex=j;
+      }
+    }
+    int temp=arr[i];
+    arr[i]=arr[minindex];
+    arr[minindex]=temp;
+  }
+  display(n,arr);
+  cout<<endl;
+}
+void insertionsort(int n,int arr[])
+{
+  for (int i = 1; i < n; i++)
+  {
+    int key=arr[i];
+    int j=i-1;
+    while (j>=0 && arr[j] > key)
+    {
+      arr[j+1]=arr[j];
+      j--;
+    }
+    arr[j+1]=key;
+  }
+  display(n,arr);
+  cout<<endl;
+}
+void shellsort(int n,int arr[])
+{
+  int gap=n;
+  for (int i = gap/2; i > 0; i/=2)
+  {
+    for (int j = i; j < n ; j++)
+    {
+      int res=j;
+      int temp=arr[j];
+     while (res>=i && arr[res-i] > temp)
+     {
+      arr[res]=arr[res-i];
+      res-=i;
+     }
+     arr[res]=temp;
+    }
+  }
+  display(n,arr);
+  cout<<endl;
+}
+void combsort(int n,int arr[])
+{
+  int gap=n;
+  bool swapped=true;
+  while (gap > 1 || swapped)
+  {
+    gap=gap/1.3;
+    if (gap < 1)
+    {
+      gap = 1;
+    }
+    swapped=false;
+    for (int j = 0; j+gap < n ; j++)
+    {
+      if (arr[j] > arr[j+gap])
+      {
+        int temp = arr[j];
+        arr[j] = arr[j+gap];
+        arr[j+gap] = temp;
+        swapped=true;
+      }
+    }
+  }
+  display(n,arr);
+  cout<<endl;
+}
+void bubblesort(int n,int arr[])
+{
+  for (int i = 0; i < n-1; i++)
+  {
+    for (int j = 0; j < n-i-1; j++)
+    {
+      if (arr[j] > arr[j+1])
+      {
+        int temp=arr[j];
+        arr[j]=arr[j+1];
+        arr[j+1]=temp;
+      }
+    }
+  }
+  display(n,arr);
+  cout<<endl;
+}
+int interpolationsearch(int n,int arr[],int key)
+{
+  int high=n-1;
+  int low=0;
+  while (low<=high && key >= arr[low] && key <= arr[high])
+  {
+    if (arr[low]==arr[high])
+    {
+     return low;   
+    }
+    if (arr[low]==key)
+    {
+      return low;
+    }
+    int pos=low + (key-arr[low])*(high-low)/(arr[high]-arr[low]);
+    if (arr[pos] == key)
+    {
+      return pos;
+    }
+    if (arr[pos] < key)
+    {
+      low=pos+1;
+    }
+    if (arr[pos] > key)
+    {
+      high=pos-1;
+    }
+  }
+  cout<<"not found"<<endl;
+  return -1;
+}
+int binarysearch(int n,int arr[],int key)
+{
+  int right = n-1;
+  int left = 0;
+  while (left<=right)
+  {
+    int mid = left + (right-left)/2;
+    if (arr[mid]==key)
+    {
+      return mid; 
+    }
+    if (arr[mid] < key)
+    {
+      left = mid + 1;
+    }
+    else if(arr[mid] > key)
+    {
+     right = mid - 1;
+    }
+  }
+  cout<<"not found"<<endl;
+  return -1;
+}
+int main()
+{
+  const int n = 5;
+  int arr[n]={0,1,2,3,4};
+  // selectionsort(n,arr);
+  // insertionsort(n,arr);
+  // shellsort(n,arr);
+  // combsort(n,arr);
+  // bubblesort(n,arr);
+  // cout<<interpolationsearch(n,arr,4)<<endl;
+  cout<<binarysearch(n,arr,4)<<endl;
+}

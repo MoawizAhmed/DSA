@@ -1,1 +1,1 @@
-  // stack s(4);
+cout<<interpolationsearch(n,arr,4)<<endl;
