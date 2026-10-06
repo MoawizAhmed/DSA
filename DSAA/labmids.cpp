@@ -660,8 +660,6 @@
 //             else
 //             {
 //                 currnew->next = temp;
-
-            
 //                 currnew = currnew->next;
 //             }
 
@@ -744,78 +742,79 @@
 
 //================S T A C K===============
 
-//  class stack
-//  {
-//    private:
+  class stack
+  {
+    private:
 
-//    int size;
-//    int top;
-//    int *arr;
+    int size;
+    int top;
+    int *arr;
 
-//    public:
+    public:
   
-//    stack(int size)
-//    {
-//      this->size=size;
-//    top=-1;
-//    arr=new int[size];
-//  }
-//  stack()
-//  {
-//   top=-1;
-//  }
-//  int gettop(){return top;}
-//  void setsize(int size)
-//  {
-//   this->size=size;
-//   arr=new int[size];
-//  }
-//  bool isempty()
-//  {
-//    if (top==-1)
-//    {
-//      return true;
-//    }
-//    else
-//    {
-//      return false;
-//    }
-//  }
-//  void push(int val)
-//  {
-//   if (top==size-1)
-//   {
-//    cout<<"Stack overflow"<<endl;
-//    return;
-//   }
-//   arr[++top]=val;
-//  }
-//  int pop()
-//  {
-//    if (top==-1)
-//    {
-//      cout<<"Stack underflow"<<endl;
-//      return -1;
-//    }
-//    return arr[top];
-//    top--;
-//  }
-//  char peek()
-//  {
-//    if (top==-1)
-//    {
-//      cout<<"No elements"<<endl;
-//      return -1;
-//    }
-//    return arr[top];
-//  }
-//  void display()
-//  {
-//    for (int i = 0; i <= top; i++)
-//    {
-//      cout<<arr[i]<<endl;
-//    }
-//  }
+    stack(int size)
+    {
+      this->size=size;
+    top=-1;
+    arr=new int[size];
+  }
+  stack()
+  {
+   top=-1;
+  }
+  int gettop(){return top;}
+  void setsize(int size)
+  {
+   this->size=size;
+   arr=new int[size];
+  }
+  bool isempty()
+  {
+    if (top==-1)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  void push(int val)
+  {
+   if (top==size-1)
+   {
+    cout<<"Stack overflow"<<endl;
+    return;
+   }
+   arr[++top]=val;
+  }
+  int pop()
+  {
+    if (top==-1)
+    {
+      cout<<"Stack underflow"<<endl;
+      return -1;
+    }
+    return arr[top];
+    top--;
+  }
+  char peek()
+  {
+    if (top==-1)
+    {
+      cout<<"No elements"<<endl;
+      return -1;
+    }
+    return arr[top];
+  }
+  void display()
+  {
+    for (int i = 0; i <= top; i++)
+    {
+      cout<<arr[i]<<endl;
+    }
+  }
+};
 //  void reverse()
 //  {
 //   int s=top/2;
@@ -898,26 +897,26 @@
 //    s.display();
 //   }
   
-// int precedence(char op)
-// {
-//     if (op == '+' || op == '-')
-//         return 1;
+ int precedence(char op)
+ {
+     if (op == '+' || op == '-')
+         return 1;
 
-//     if (op == '*' || op == '/')
-//         return 2;
+     if (op == '*' || op == '/')
+         return 2;
 
-//     if (op == '^')
-//         return 3;
+     if (op == '^')
+         return 3;
 
-//     return 0;
-// }
+     return 0;
+ }
 
-// bool isOperator(char ch)
-// {
-//     return ch == '+' || ch == '-' ||
-//            ch == '*' || ch == '/' ||
-//            ch == '^';
-// }
+ bool isOperator(char ch)
+ {
+     return ch == '+' || ch == '-' ||
+            ch == '*' || ch == '/' ||
+            ch == '^';
+ }
 
 // string infixToPostfix(string infix)
 // {
@@ -1453,93 +1452,139 @@
 //   cout<<binarysearch(n,arr,2)<<endl;
 //   // cout<<binaryreversesearch(n,arr,4);
 // }
-class node
+// class node
+// {
+//  public:
+//  node* next;
+//  node* prev;
+//  int data;
+//  node(int val)
+//  {
+//   this->data=val;
+//   this->next = nullptr;
+//   this->prev = nullptr;
+//  }
+// };
+// class doublylist
+// {
+//  private:
+//  node* head;
+//  node* tail;
+//  public:
+//  doublylist()
+//  {
+//   head=nullptr;
+//   tail=nullptr;
+//  }
+//  void insertatsstart(int val)
+//  {
+//   node* newnode=new node(val);
+//  if (head==nullptr)
+//   {
+//     head=newnode;
+//     head->next=nullptr;
+//     head->prev=nullptr;
+//     tail=head;
+//     return;
+//   }
+//   newnode->next=head;
+//   head->prev=newnode;
+//   newnode->prev=nullptr;
+//   head=newnode;
+//   return;
+//  }
+//  void insertatend(int val)
+//  {
+//   node* newnode=new node(val);
+//   node* temp=head;
+//   if (head==nullptr)
+//   {
+//     insertatsstart(val);
+//     return;
+//   }
+//   while (temp->next!=nullptr)
+//   {
+//     temp=temp->next;
+//   }
+//   temp->next=newnode;
+//   newnode->next=nullptr;
+//   newnode->prev=temp;
+//   tail=newnode;
+//   return;
+//  }
+//  void displayforward()
+//  {
+//   node* temp=head;
+//   while (temp!=nullptr)
+//   {
+//    cout<<temp->data;
+//    temp=temp->next;
+//   }
+//   cout<<endl;
+//  }
+//  void displaybackwards()
+//  {
+//   node* temp=tail;
+//   while (temp!=nullptr)
+//   {
+//    cout<<temp->data;
+//    temp=temp->prev;
+//   }
+//   cout<<endl;
+//  }
+// };
+// int main()
+// {
+//   doublylist d;
+//   d.insertatsstart(1);
+//   d.insertatend(2);
+//   d.insertatend(3);
+//   d.displayforward();
+//   d.displaybackwards();
+// }
+string postfix(string infix)
 {
- public:
- node* next;
- node* prev;
- int data;
- node(int val)
- {
-  this->data=val;
-  this->next = nullptr;
-  this->prev = nullptr;
- }
-};
-class doublylist
-{
- private:
- node* head;
- node* tail;
- public:
- doublylist()
- {
-  head=nullptr;
-  tail=nullptr;
- }
- void insertatsstart(int val)
- {
-  node* newnode=new node(val);
- if (head==nullptr)
+  string postfix="";
+  stack s(100);
+  int length=infix.length();
+  for (int i = 0; i < length; i++)
   {
-    head=newnode;
-    head->next=nullptr;
-    head->prev=nullptr;
-    tail=head;
-    return;
-  }
-  newnode->next=head;
-  head->prev=newnode;
-  newnode->prev=nullptr;
-  head=newnode;
-  return;
- }
- void insertatend(int val)
- {
-  node* newnode=new node(val);
-  node* temp=head;
-  if (head==nullptr)
-  {
-    insertatsstart(val);
-    return;
-  }
-  while (temp->next!=nullptr)
-  {
-    temp=temp->next;
-  }
-  temp->next=newnode;
-  newnode->next=nullptr;
-  newnode->prev=temp;
-  tail=newnode;
-  return;
- }
- void displayforward()
- {
-  node* temp=head;
-  while (temp!=nullptr)
-  {
-   cout<<temp->data;
-   temp=temp->next;
-  }
-  cout<<endl;
- }
- void displaybackwards()
- {
-  node* temp=tail;
-  while (temp!=nullptr)
-  {
-   cout<<temp->data;
-   temp=temp->prev;
-  }
-  cout<<endl;
- }
-};
-int main()
-{
-  doublylist d;
-  d.insertatsstart(1);
-  d.insertatend(2);
-  d.insertatend(3);
-  d.displayforward();
-  d.displaybackwards();
-}
+    char ch=infix[i];
+    if (ch>='A' && ch<='Z'
+      ||ch>='a' && ch<='z')
+    {
+      postfix+=ch;
+    }
+    
+   else if (ch=='(')
+      {
+        s.push(ch);
+      }
+     else if (ch==')')
+      {
+        while (s.gettop()>=0 && s.peek()!='(')
+        {
+          char nigga=s.pop();
+          postfix+=nigga;
+        }
+        s.pop();
+      }
+       else if (isOperator(ch))
+        {
+          while (s.gettop()>=0 && 
+                 s.peek()!='(' &&
+                 (precedence(s.peek()) > precedence(ch) ||
+                 (precedence(s.peek()) == precedence(ch) && ch!='^')))
+          {
+            char nigga=s.pop();
+            postfix+=nigga;
+          }
+          s.push(ch);
+        }
+          while(s.gettop()>=0)
+          {
+            postfix+=s.pop();
+          }
+      }
+  return postfix;
+    }
