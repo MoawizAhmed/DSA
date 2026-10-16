@@ -1,1 +1,1 @@
-cout<<binaryreversesearch(n,arr,4);
+board[0][3]=1;
