@@ -500,70 +500,422 @@ using namespace std;
 
 //     return 0;
 // }
- class treeNode
- {
- public:
-     int data;
-     treeNode* left;
-     treeNode* right;
+//  class treeNode
+//  {
+//  public:
+//      int data;
+//      treeNode* left;
+//      treeNode* right;
 
-     treeNode(int value)
-     {
-         data = value;
-         left = nullptr;
-         right = nullptr;
-     }
- };
- class tree
- {
- public:
-     treeNode* root;
+//      treeNode(int value)
+//      {
+//          data = value;
+//          left = nullptr;
+//          right = nullptr;
+//      }
+//  };
+//  class tree
+//  {
+//  public:
+//      treeNode* root;
 
-     tree()
-     {
-         root = nullptr;
-     }
+//      tree()
+//      {
+//          root = nullptr;
+//      }
 
-     void inorder(treeNode* temp)
-     {
-         if (temp == nullptr)
-             return;
+//      void inorder(treeNode* temp)
+//      {
+//          if (temp == nullptr)
+//              return;
 
-         inorder(temp->left);
-         cout << temp->data << " ";
-         inorder(temp->right);
-     }
+//          inorder(temp->left);
+//          cout << temp->data << " ";
+//          inorder(temp->right);
+//      }
 
 
 
-bool isbst(treeNode* root)
+// bool isbst(treeNode* root)
+// {
+//     if (root == nullptr)
+//         return true;
+
+//     if (root->left != nullptr)
+//     {
+//         treeNode* temp = root->left;
+
+//         while (temp->right != nullptr)
+//             temp = temp->right;
+
+//         if (temp->data >= root->data)
+//             return false;
+//     }
+
+//     if (root->right != nullptr)
+//     {
+//         treeNode* temp = root->right;
+
+//         while (temp->left != nullptr)
+//             temp = temp->left;
+
+//         if (temp->data <= root->data)
+//             return false;
+//     }
+
+//     return isbst(root->left) && isbst(root->right);
+// }
+// void search(int value)
+// {
+//     treeNode* temp=root;
+//     while (temp->data!=value && temp!=nullptr)
+//     {
+//         if (value<temp->data)
+//         {
+//             temp=temp->right;
+//         }
+//         else
+//         {
+//             temp=temp->left;
+//         }
+//     }
+// }
+// void insert(int value)
+// {
+//     treeNode* temp=root;
+//     treeNode* newnode=new treeNode(value);
+//     if (temp==nullptr)
+//     {
+//      root=newnode;
+//      return;
+//     }
+//     treeNode* parent=root;
+//     while (temp!=nullptr)
+//     {
+//       if (value<temp->data)
+//       {
+//         parent=temp;
+//         temp=temp->left;
+//       }
+//       else if (value>temp->data)
+//       {
+//         parent=temp;
+//         temp=temp->right;
+//       }
+//     }
+//     if (parent->data>value)
+//     {
+//         parent->left=newnode;
+//     }
+//     else
+//     {
+//         parent->right=newnode;
+//     }
+// }
+// void deletee(int value)
+// {
+//    treeNode* temp=root;
+//    treeNode* parent=root;
+//    while (temp!=nullptr && temp->data!=value)
+//    {
+//     if (value<temp->data)
+//     {
+//         parent=temp;
+//         temp=temp->left;
+//     }
+//     else
+//     {
+//         parent=temp;
+//         temp=temp->right;
+//     }
+//    }
+//     if (temp == nullptr)
+//     return;
+//    if (temp==root && temp->left==nullptr && temp->right==nullptr)
+//    {
+//     delete root;
+//     root = nullptr;
+//     return;
+//    }
+   
+//     //case 1
+//    if (temp->left==nullptr && temp->right==nullptr)
+//    {
+//      if(parent->left==temp)
+//      {
+//         parent->left=nullptr;
+//      }
+//      else if(parent->right==temp)
+//      {
+//         parent->right=nullptr;
+//      }
+//      delete temp;
+//      return;
+//    }
+//    //case 2
+//    if (parent->right==temp)
+//    {
+//     if (temp->left==nullptr)
+//     {
+//     parent->right=temp->right;
+//     delete temp;
+//     return;
+//     }
+//     else if(temp->right==nullptr)
+//     {
+//     parent->right=temp->left;
+//     delete temp;
+//     return;
+//     }
+//    }
+//    else if (parent->left==temp)
+//    {
+//     if (temp->left==nullptr)
+//     {
+//     parent->left=temp->right;
+//     delete temp;
+//     return;
+//     }
+//     else if(temp->right==nullptr)
+//     {
+//     parent->left=temp->left;
+//     delete temp;
+//     return;
+//     }
+//    }
+//    //case 3
+//    treeNode* succparent=temp;
+//    treeNode* succ=temp->right;
+//    while (succ->left!=nullptr)
+//    {
+//     succparent=succ;
+//     succ=succ->left;
+//    }
+//   if (succparent->left == succ)
+//     succparent->left = succ->right;
+// else
+//     succparent->right = succ->right;
+
+// temp->data = succ->data;
+// delete succ;
+// return;
+// }
+//  };
+
+// =============== R E C U R S I O N ===================
+// bool path(int **arr,int **visited,int n,int x,int y)
+// {
+//     if (x>=0 && y>=0 && x<n && y<n &&
+//         arr[x][y]!=1 && visited[x][y]!=1)
+//     {
+//         if (x==n-1 && y==n-1)
+//         {
+//             visited[x][y]=1;
+//             return true;
+//         }
+//        visited[x][y]=1;
+//     if (path(arr,visited,n,x,y-1))
+//     {
+//         return true;
+//     }
+//     if (path(arr,visited,n,x,y+1))
+//     {
+//         return true;
+//     }
+//     if (path(arr,visited,n,x-1,y))
+//     {
+//         return true;
+//     }
+    
+//     if (path(arr,visited,n,x+1,y))
+//     {
+//         return true;
+//     }
+//     visited[x][y]=0;
+//     return false;
+//   }
+//   return false;
+// }
+// int main()
+// {
+//     int n;
+//     cout<<"Enter the number of n"<<endl;
+//     cin>>n;
+//     int **arr=new int*[n];
+//     int **visited=new int*[n];
+//     for (int i = 0; i < n; i++)
+//     {
+//         visited[i]=new int[n];
+//     }    
+//     for (int i = 0; i < n; i++)
+//     {
+//         arr[i]=new int[n];
+//     }
+//      for (int i = 0; i < n; i++)
+//      {
+//         for (int j = 0; j < n; j++)
+//         {
+//             cin>>arr[i][j];
+//         }
+//      }
+//      for (int i = 0; i < n; i++)
+//      {
+//         for (int j = 0; j < n; j++)
+//         {
+//         visited[i][j]=0;
+//         }
+//      }
+//      for (int i = 0; i < n; i++)
+//      {
+//         for (int j = 0; j < n; j++)
+//         {
+//             cout<<arr[i][j]<<" ";
+//         }
+//         cout<<endl;
+//      }
+     
+// }
+// bool issafe(char **rows,int x,int y,int r, int c)
+// {
+//       if (x == 2 && y == 2)
+//         return false;
+
+//     int i=x-1;
+//     while (i>=0)
+//     {
+//         if (rows[i][y]!='-')
+//         {
+//             return false;
+//         }
+//         i--;
+//     }
+//     i=x-1;
+//     int j=y+1;
+//     while (i<=r && j<=c && i>=0 && j>=0)
+//     {
+//         if (rows[i][j]!='-')
+//         {
+//             return false;
+//         }
+//         i--;
+//         j++;
+//     }
+//     i=x-1;j=y-1;
+//     while (i<=r && j<=c && i>=0 && j>=0)
+//     {
+//         if (rows[i][j]!='-')
+//         {
+//             return false;
+//         }
+//         i--;
+//         j--;
+//     }
+    
+//     return true;
+// }
+// bool arrangement(char **rows,int x,int y,int r, int c,char course)
+// {
+// if (x==r-1 || y==c-1)
+// {
+//     return;
+// }   
+
+
+   
+// }
+// int main()
+// {
+//     const int rows=6;
+//     const int cols=8;
+//     char **room=new char*[rows];
+//     for (int i = 0; i < rows; i++)
+//     {
+//         room[i]=new char[cols];
+//     }
+    
+//     for (int i = 0; i < rows; i++)
+//     {
+//     for (int j = 0; j < cols; j++)
+//     {
+//         room[i][j]='-';
+//     }
+//     }
+    
+//     // for (int i = 0; i < rows; i++)
+//     // {
+//     // for (int j = 0; j < cols; j++)
+//     // {
+//     //     cout<<room[i][j]<<" ";
+//     // }
+//     // cout<<endl;
+//     // }  
+//     return 0;
+// }
+bool validcobination(int n,int s,int arr2[])
 {
-    if (root == nullptr)
-        return true;
-
-    if (root->left != nullptr)
+    int sum=0;
+    for (int i = 0; i < n-1; i++)
     {
-        treeNode* temp = root->left;
-
-        while (temp->right != nullptr)
-            temp = temp->right;
-
-        if (temp->data >= root->data)
-            return false;
+        for (int j = i+1; j < n; j++)
+        {
+            if (arr2[i]==arr2[j])
+            {
+                cout<<"first false";
+                return false;
+            }   
+        }   
     }
-
-    if (root->right != nullptr)
+    for (int i = 0; i < n; i++)
     {
-        treeNode* temp = root->right;
-
-        while (temp->left != nullptr)
-            temp = temp->left;
-
-        if (temp->data <= root->data)
-            return false;
+        sum+=arr2[i];
     }
-
-    return isbst(root->left) && isbst(root->right);
+    if (sum!=s)
+    {
+        cout<<"second false";
+        return false;
+    }
+    return true;
 }
 
- };
+void codes(int arr[], int n, int N, int s,
+           int arr2[], int index, int start, int &count)
+{
+    // Base case: N digits selected
+    if (index == N)
+    {
+        if (validcobination(N, s, arr2))
+        {
+            for (int i = 0; i < N; i++)
+                cout << arr2[i] << " ";
+
+            cout << endl;
+            count++;
+        }
+
+        return;
+    }
+
+    // Try selecting each available digit
+    for (int i = start; i < n; i++)
+    {
+        arr2[index] = arr[i];
+
+        codes(arr, n, N, s, arr2, index + 1, i + 1, count);
+    }
+}
+
+int main()
+{
+    int N=3;
+    int n;
+    cout<<"Enter the number of elements"<<endl;
+    cin>>n;
+    int *arr=new int[n];
+    for (int i = 0; i < n; i++)
+    {
+      cin>>arr[i];
+    }
+    int *arr2=new int[N];
+
+    return 0;
+}
