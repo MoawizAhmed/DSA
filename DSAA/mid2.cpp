@@ -148,7 +148,7 @@ using namespace std;
 //     mergesort(arr,mid+1,r);
 //     merge(arr,l,mid,r);
 //   }
-  
+
 // }
 // //quick sort
 
@@ -182,7 +182,7 @@ using namespace std;
 //    quicksort(arr,l,end-1);
 //    quicksort(arr,end+1,u);
 //   }
-  
+
 // }
 
 // int partition(int arr[],int l,int u)
@@ -220,7 +220,7 @@ using namespace std;
 //      quicksort(arr,l,loc-1);
 //      quicksort(arr,loc+1,u);
 //    }
-   
+
 // }
 // int main()
 // {
@@ -637,7 +637,7 @@ using namespace std;
 //     root = nullptr;
 //     return;
 //    }
-   
+
 //     //case 1
 //    if (temp->left==nullptr && temp->right==nullptr)
 //    {
@@ -726,7 +726,7 @@ using namespace std;
 //     {
 //         return true;
 //     }
-    
+
 //     if (path(arr,visited,n,x+1,y))
 //     {
 //         return true;
@@ -773,7 +773,7 @@ using namespace std;
 //         }
 //         cout<<endl;
 //      }
-     
+
 // }
 // bool issafe(char **rows,int x,int y,int r, int c)
 // {
@@ -810,7 +810,7 @@ using namespace std;
 //         i--;
 //         j--;
 //     }
-    
+
 //     return true;
 // }
 // bool arrangement(char **rows,int x,int y,int r, int c,char course)
@@ -821,7 +821,7 @@ using namespace std;
 // }   
 
 
-   
+
 // }
 // int main()
 // {
@@ -832,7 +832,7 @@ using namespace std;
 //     {
 //         room[i]=new char[cols];
 //     }
-    
+
 //     for (int i = 0; i < rows; i++)
 //     {
 //     for (int j = 0; j < cols; j++)
@@ -840,7 +840,7 @@ using namespace std;
 //         room[i][j]='-';
 //     }
 //     }
-    
+
 //     // for (int i = 0; i < rows; i++)
 //     // {
 //     // for (int j = 0; j < cols; j++)
@@ -851,71 +851,384 @@ using namespace std;
 //     // }  
 //     return 0;
 // }
-bool validcobination(int n,int s,int arr2[])
-{
-    int sum=0;
-    for (int i = 0; i < n-1; i++)
-    {
-        for (int j = i+1; j < n; j++)
-        {
-            if (arr2[i]==arr2[j])
-            {
-                cout<<"first false";
-                return false;
-            }   
-        }   
-    }
-    for (int i = 0; i < n; i++)
-    {
-        sum+=arr2[i];
-    }
-    if (sum!=s)
-    {
-        cout<<"second false";
-        return false;
-    }
-    return true;
-}
+// bool validcobination(int n,int s,int arr2[])
+// {
+//     int sum=0;
+//     for (int i = 0; i < n-1; i++)
+//     {
+//         for (int j = i+1; j < n; j++)
+//         {
+//             if (arr2[i]==arr2[j])
+//             {
+//                 cout<<"first false";
+//                 return false;
+//             }   
+//         }   
+//     }
+//     for (int i = 0; i < n; i++)
+//     {
+//         sum+=arr2[i];
+//     }
+//     if (sum!=s)
+//     {
+//         cout<<"second false";
+//         return false;
+//     }
+//     return true;
+// }
 
-void codes(int arr[], int n, int N, int s,
-           int arr2[], int index, int start, int &count)
-{
-    // Base case: N digits selected
-    if (index == N)
-    {
-        if (validcobination(N, s, arr2))
-        {
-            for (int i = 0; i < N; i++)
-                cout << arr2[i] << " ";
+// void codes(int arr[], int n, int N, int s,
+//            int arr2[], int index, int start, int &count)
+// {
+//     // Base case: N digits selected
+//     if (index == N)
+//     {
+//         if (validcobination(N, s, arr2))
+//         {
+//             for (int i = 0; i < N; i++)
+//                 cout << arr2[i] << " ";
 
-            cout << endl;
-            count++;
-        }
+//             cout << endl;
+//             count++;
+//         }
 
-        return;
-    }
+//         return;
+//     }
 
-    // Try selecting each available digit
-    for (int i = start; i < n; i++)
-    {
-        arr2[index] = arr[i];
+//     // Try selecting each available digit
+//     for (int i = start; i < n; i++)
+//     {
+//         arr2[index] = arr[i];
 
-        codes(arr, n, N, s, arr2, index + 1, i + 1, count);
-    }
-}
+//         codes(arr, n, N, s, arr2, index + 1, i + 1, count);
+//     }
+// }
+
+// int main()
+// {
+//     int N=3;
+//     int n;
+//     cout<<"Enter the number of elements"<<endl;
+//     cin>>n;
+//     int *arr=new int[n];
+//     for (int i = 0; i < n; i++)
+//     {
+//       cin>>arr[i];
+//     }
+//     int *arr2=new int[N];
+
+//     return 0;
+// }
+// bool validcombination(int arr[],int N,int S)
+// {
+//  int sum=0;
+//     for (int i = 0; i < N; i++)
+//     {
+//     sum+=arr[i];
+//     }
+//       for (int i = 0; i < N-1; i++)
+//      {
+//          for (int j = i+1; j < N; j++)
+//          {
+//              if (arr[i]>arr[j])
+//              {
+//                  return false;
+//              }   
+//          }   
+//      }
+//     if (sum==S)
+//     {
+//         return true;
+//     }
+//         return false;
+// }
+// void codes(int arr[],int index,int n,int N,int S,int temp[])
+// {
+//     if (index==N)
+//     {
+//         if (validcombination(temp,N,S))
+//         {
+//             for (int i = 0; i < N; i++)
+//             {
+//                 cout<<temp[i]<<" ";
+//             }
+//                   cout<<endl;
+//         }
+//         return;
+//     }
+
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         temp[index]=arr[i];
+//         codes(arr,index+1,n,N,S,temp);
+//     }
+// }
+
+
+// int main()
+// {
+//   int n=5;
+//   int *arr=new int[n];
+//   for (int i = 0; i < n; i++)
+//   {
+//     arr[i]=i+1;
+//   }
+//   int temp[3];
+//   codes(arr,0,n,3,9,temp);
+//     return 0;
+// }
+// bool validtreasures(int temp[], int k, int T)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < k; i++)
+//     {
+//         sum += temp[i];
+//     }
+//     for (int i = 0; i < k - 1; i++)
+//     {
+//         for (int j = i+1; j < k; j++)
+//         {
+//             if (temp[i] == temp[j])
+//             {
+//                 return false;
+//             }
+
+//         }
+
+//     }
+
+//     if (sum >= T)
+//     {
+//         return true;
+//     }
+//     return false;
+// }
+// void treasure(int arr[], int n, int index, int K, int T, int temp[], int& count)
+// {
+//     if (index == K)
+//     {
+//         return;
+//     }
+
+//     if (index == n)
+//     {
+//         if (validtreasures(temp, K, T))
+//         {
+//             count++;
+//             for (int i = 0; i < K; i++)
+//             {
+//                 cout << temp[i] << " ";
+//             }
+//             cout << endl;
+//         }
+//         return;
+//     }
+//     for (int i = index; i < n; i++)
+//     {
+//         temp[index] = arr[i];
+//         treasure(arr, n, i + 1, K, T, temp, count);
+//     }
+
+// }
+// int main()
+// {
+
+//     int arr[] = { 2,3,5,7 };
+//     int k = 2;
+//     int T = 8;
+//     int temp[2];
+//     int count = 0;
+//     treasure(arr, 4, 0, k, T, temp, count);
+//     return 0;
+// }
+// bool validpassword(char temp[], int N)
+// {
+//     int digitcount = 0;
+//     int specialsymbol = 0;
+//     for (int i = 0; i < N - 1; i++)
+//     {
+//         for (int j = i + 1; j < N; j++)
+//         {
+//             if (temp[i] == temp[j])
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < N - 1; i++)
+//     {
+//         if (temp[i] >= '0' && temp[i] <= '9' && temp[i + 1] >= '0' && temp[i + 1] <= '9')
+//         {
+//             return false;
+//         }
+
+//     }
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (temp[i] >= '0' && temp[i] <= '9')
+//         {
+//             digitcount++;
+//         }
+//     }
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (temp[i] == '!' || temp[i] == '@' || temp[i] == '#' || temp[i] == '$' || temp[i] == '%' || temp[i] == '^' || temp[i] == '&' || temp[i] == '*')
+//         {
+//             specialsymbol++;
+//         }
+//     }
+//     if (digitcount < 2)
+//     {
+//         return false;
+//     }
+//     if (specialsymbol == 0)
+//     {
+//         return false;
+//     }
+//     return true;
+// }
+
+// void password(char arr[], char temp[], bool visited[],
+//               int n, int N, int index)
+// {
+//     if (index == N)
+//     {
+//         if (validpassword(temp, N))
+//         {
+//             for (int i = 0; i < N; i++)
+//                 cout << temp[i];
+
+//             cout << endl;
+//         }
+
+//         return;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             temp[index] = arr[i];
+//             visited[i] = true;
+
+//             password(arr, temp, visited, n, N, index + 1);
+
+//             visited[i] = false;
+//         }
+//     }
+// }
+
+// int main()
+// {
+//     int n = 5;
+//     int N = 4;
+
+//     char arr[] = {'0', '2', 'v', '^', 'm'};
+
+//     char* temp = new char[N];
+//     bool* visited = new bool[n];
+
+//     for (int i = 0; i < n; i++)
+//         visited[i] = false;
+
+//     password(arr, temp, visited, n, N, 0);
+
+//     delete[] temp;
+//     delete[] visited;
+
+//     return 0;
+// }
+
+// bool isSafe(int board[9][9], int row, int col, int num)
+// {
+//     // Check row and column
+//     for (int i = 0; i < 9; i++)
+//     {
+//         if (board[row][i] == num || board[i][col] == num)
+//             return false;
+//     }
+
+//     // Check 3x3 box
+//     int startRow = (row / 3) * 3;
+//     int startCol = (col / 3) * 3;
+
+//     for (int i = startRow; i < startRow + 3; i++)
+//     {
+//         for (int j = startCol; j < startCol + 3; j++)
+//         {
+//             if (board[i][j] == num)
+//                 return false;
+//         }
+//     }
+
+//     return true;
+// }
+
+// bool solveSudoku(int board[9][9])
+// {
+//     for (int row = 0; row < 9; row++)
+//     {
+//         for (int col = 0; col < 9; col++)
+//         {
+//             if (board[row][col] == 0)
+//             {
+//                 for (int num = 1; num <= 9; num++)
+//                 {
+//                     if (isSafe(board, row, col, num))
+//                     {
+//                         board[row][col] = num;
+
+//                         if (solveSudoku(board))
+//                             return true;
+
+//                         board[row][col] = 0;
+//                     }
+//                 }
+
+//                 return false;
+//             }
+//         }
+//     }
+
+//     return true;
+// }
+
+// int main()
+// {
+//     int board[9][9] =
+//     {
+//         { 5,3,0,0,7,0,0,0,0 },
+//         { 6,0,0,1,9,5,0,0,0 },
+//         { 0,9,8,0,0,0,0,6,0 },
+//         { 8,0,0,0,6,0,0,0,3 },
+//         { 4,0,0,8,0,3,0,0,1 },
+//         { 7,0,0,0,2,0,0,0,6 },
+//         { 0,6,0,0,0,0,2,8,0 },
+//         { 0,0,0,4,1,9,0,0,5 },
+//         { 0,0,0,0,8,0,0,7,9 }
+//     };
+
+//     if (solveSudoku(board))
+//     {
+//         for (int i = 0; i < 9; i++)
+//         {
+//             for (int j = 0; j < 9; j++)
+//                 cout << board[i][j] << " ";
+
+//             cout << endl;
+//         }
+//     }
+//     else
+//     {
+//         cout << "No solution exists";
+//     }
+
+//     return 0;
+// }
 
 int main()
 {
-    int N=3;
-    int n;
-    cout<<"Enter the number of elements"<<endl;
-    cin>>n;
-    int *arr=new int[n];
-    for (int i = 0; i < n; i++)
-    {
-      cin>>arr[i];
-    }
-    int *arr2=new int[N];
 
     return 0;
 }
