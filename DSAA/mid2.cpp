@@ -1569,181 +1569,389 @@ using namespace std;
 //     return 0;
 // }
 //================== T R E E P A R T 2 ===============
-class nodetree
-{
-public:
-    int data;
-    nodetree* right;
-    nodetree* left;
-    nodetree(int value)
-    {
-        this->data = value;
-        right = nullptr;
-        left = nullptr;
-    }
-};
+// class nodetree
+// {
+// public:
+//     int data;
+//     nodetree* right;
+//     nodetree* left;
+//     nodetree(int value)
+//     {
+//         this->data = value;
+//         right = nullptr;
+//         left = nullptr;
+//     }
+// };
 
-class tree
-{
-public:
-    nodetree* root;
-    tree()
-    {
-        root = nullptr;
-    }
-    void insert(int value)
-    {
-        nodetree* newnode = new nodetree(value);
-        if (root == nullptr)
-        {
-            root = newnode;
-            newnode->left = nullptr;
-            newnode->right = nullptr;
-            return;
-        }
-        nodetree* temp = root;
-        nodetree* parent = root;
-        while (temp != nullptr)
-        {
-            if (value < temp->data)
-            {
-                parent = temp;
-                temp = temp->left;
-            }
-            else
-            {
-                parent = temp;
-                temp = temp->right;
-            }
-        }
-        if (value < parent->data)
-        {
-            parent->left = newnode;
-            newnode->left = nullptr;
-            newnode->right = nullptr;
-            return;
-        }
-        else
-        {
-            parent->right = newnode;
-            newnode->left = nullptr;
-            newnode->right = nullptr;
-            return;
-        }
-    }
-    nodetree*& getroot()
-    {
-        return root;
-    }
-    void deletee(int value, nodetree*& root)
-    {
-        if (root == nullptr)
-        {
-            return;
-        }
-        nodetree* temp = root;
-        nodetree* parent = nullptr;
-        while (temp != nullptr && temp->data != value)
-        {
-            if (value < temp->data)
-            {
-                parent = temp;
-                temp = temp->left;
-            }
-            else
-            {
-                parent = temp;
-                temp = temp->right;
-            }
-        }
-        if (temp == nullptr)
-        {
-            cout << "no such node exists" << endl;
-            return;
-        }
-        //case 1 and 2:
-        if (temp->left == nullptr || temp->right == nullptr)
-        {
-            if (parent->left == temp)
-            {
-                if (temp->left == nullptr)
-                {
-                    parent->left = temp->right;
-                    delete temp;
-                    return;
-                }
-                else if (temp->right == nullptr)
-                {
-                    parent->left = temp->left;
-                    delete temp;
-                    return;
-                }
-                else
-                {
-                    delete temp;
-                    parent->left = nullptr;
-                    return;
-                }
-            }
-            else if (parent->right == temp)
-            {
-                if (temp->left == nullptr)
-                {
-                    parent->right = temp->right;
-                    delete temp;
-                    return;
-                }
-                else if (temp->right == nullptr)
-                {
-                    parent->right = temp->left;
-                    delete temp;
-                    return;
-                }
-                else
-                {
-                    delete temp;
-                    parent->right = nullptr;
-                    return;
-                }
-            }
+// class tree
+// {
+// public:
+//     nodetree* root;
+//     tree()
+//     {
+//         root = nullptr;
+//     }
+//     void insert(int value)
+//     {
+//         nodetree* newnode = new nodetree(value);
+//         if (root == nullptr)
+//         {
+//             root = newnode;
+//             newnode->left = nullptr;
+//             newnode->right = nullptr;
+//             return;
+//         }
+//         nodetree* temp = root;
+//         nodetree* parent = root;
+//         while (temp != nullptr)
+//         {
+//             if (value < temp->data)
+//             {
+//                 parent = temp;
+//                 temp = temp->left;
+//             }
+//             else
+//             {
+//                 parent = temp;
+//                 temp = temp->right;
+//             }
+//         }
+//         if (value < parent->data)
+//         {
+//             parent->left = newnode;
+//             newnode->left = nullptr;
+//             newnode->right = nullptr;
+//             return;
+//         }
+//         else
+//         {
+//             parent->right = newnode;
+//             newnode->left = nullptr;
+//             newnode->right = nullptr;
+//             return;
+//         }
+//     }
+//     nodetree*& getroot()
+//     {
+//         return root;
+//     }
+//     void deletee(int value, nodetree*& root)
+//     {
+//         if (root == nullptr)
+//         {
+//             return;
+//         }
+//         nodetree* temp = root;
+//         nodetree* parent = nullptr;
+//         while (temp != nullptr && temp->data != value)
+//         {
+//             if (value < temp->data)
+//             {
+//                 parent = temp;
+//                 temp = temp->left;
+//             }
+//             else
+//             {
+//                 parent = temp;
+//                 temp = temp->right;
+//             }
+//         }
+//         if (temp == nullptr)
+//         {
+//             cout << "no such node exists" << endl;
+//             return;
+//         }
+//         //case 1 and 2:
+//         if (temp->left == nullptr || temp->right == nullptr)
+//         {
+//             if (parent->left == temp)
+//             {
+//                 if (temp->left == nullptr)
+//                 {
+//                     parent->left = temp->right;
+//                     delete temp;
+//                     return;
+//                 }
+//                 else if (temp->right == nullptr)
+//                 {
+//                     parent->left = temp->left;
+//                     delete temp;
+//                     return;
+//                 }
+//                 else
+//                 {
+//                     delete temp;
+//                     parent->left = nullptr;
+//                     return;
+//                 }
+//             }
+//             else if (parent->right == temp)
+//             {
+//                 if (temp->left == nullptr)
+//                 {
+//                     parent->right = temp->right;
+//                     delete temp;
+//                     return;
+//                 }
+//                 else if (temp->right == nullptr)
+//                 {
+//                     parent->right = temp->left;
+//                     delete temp;
+//                     return;
+//                 }
+//                 else
+//                 {
+//                     delete temp;
+//                     parent->right = nullptr;
+//                     return;
+//                 }
+//             }
 
-        }
-        else
-        {
-            nodetree* inordersucc = temp->right;
-            while (inordersucc->left != nullptr)
-            {
-                inordersucc = inordersucc->left;
-            }
-            temp->data = inordersucc->data;
-            deletee(inordersucc->data, temp->right);
+//         }
+//         else
+//         {
+//             nodetree* inordersucc = temp->right;
+//             while (inordersucc->left != nullptr)
+//             {
+//                 inordersucc = inordersucc->left;
+//             }
+//             temp->data = inordersucc->data;
+//             deletee(inordersucc->data, temp->right);
 
-        }
-    }
-};
-void inorder(nodetree* root)
-{
-    if (root == nullptr)
-    {
-        return;
-    }
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
-}
-int main()
-{
-    tree t;
-    t.insert(50);
-    t.insert(30);
-    t.insert(70);
-    t.insert(20);
-    t.insert(40);
-    t.insert(60);
-    t.insert(80);
-    inorder(t.getroot());
-    t.deletee(50, t.getroot());
-    cout<<endl;
-    inorder(t.getroot());
-    return 0;
-}
+//         }
+//     }
+// };
+// void inorder(nodetree* root)
+// {
+//     if (root == nullptr)
+//     {
+//         return;
+//     }
+//     inorder(root->left);
+//     cout << root->data << " ";
+//     inorder(root->right);
+// }
+// int main()
+// {
+//     tree t;
+//     t.insert(50);
+//     t.insert(30);
+//     t.insert(70);
+//     t.insert(20);
+//     t.insert(40);
+//     t.insert(60);
+//     t.insert(80);
+//     inorder(t.getroot());
+//     t.deletee(50, t.getroot());
+//     cout<<endl;
+//     inorder(t.getroot());
+//     return 0;
+// }
+
+//================= R E C U R S I O N  P A R T 2 =====================
+
+                   // C O M B I N A T I O N S
+// void combinations(int arr[],int temp[],int n,int N,int index,int start)
+// {
+//   if (index==N)
+//   {
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout<<arr[i]<<" ";
+//     }
+
+//     cout<<endl;
+//   }
+//   for (int i = start; i < n; i++)
+//   {
+//     temp[index]=arr[i];
+//     combinations(arr,temp,n,index+1,i+1,N);
+//   }
+// }
+
+// int main()
+// {
+//     int arr[]={1,2,3,4};
+//     int n=4;
+//    int temp[4];
+//    int N=3;
+//    combinations(arr,temp,n,N,0,0);
+//     return 0;
+// }
+
+//        P E R M U T A T I O N
+
+// void permutation(int arr[], int temp[], bool visited[], int n, int N, int index)
+// {
+//     if (index == n)
+//     {
+//         for (int i = 0; i < n; i++)
+//         {
+//             cout << temp[i] << " ";
+//         }
+//         cout<<endl;
+//         return;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (!visited[i])
+//         {
+//         visited[i] = true;
+//         temp[index]=arr[i];
+//         permutation(arr, temp, visited, n, N, index + 1);
+//         visited[i] = false;
+//         }    
+//     }
+
+
+// }
+// int main()
+// {
+//     int arr[] = { 1,2,3,4 };
+//     int n = 4;
+//     int temp[4];
+//     int N = 3;
+//     bool visited[4] = { false,false,false,false };
+//     permutation(arr, temp, visited, n, N, 0);
+//     return 0;
+// }
+
+// bool maze(int arr[][8], bool visited[][8], int x, int y, int &count)
+// {
+//     if ( x == 7 && y == 7 && arr[x][y] == 1 && visited[x][y] == 0)
+//     {
+//         visited[x][y]=true;
+//         count++;
+//         return true;
+//     }
+
+//     if (x >= 0 && y >= 0 && x < 8 && y < 8 && arr[x][y] != 0 && visited[x][y] != 1)
+//     {
+//         visited[x][y] = true;
+//         if(maze(arr, visited, x, y - 1, count))
+//         {
+//        return true;
+//         }
+//         if(maze(arr, visited, x, y + 1, count))
+//         {
+//         return true;
+//         }
+//         if(maze(arr, visited, x - 1, y, count))
+//         {
+//        return true;
+//         }
+//         if(maze(arr, visited, x + 1, y, count))
+//         {
+//        return true;
+//         }
+//         visited[x][y] = false;
+//         return false;
+//     }
+//    return false;
+// }
+
+// //         N  Q U E E N S 
+
+// bool issafe(int **board,int x,int y,int n)
+// { 
+//     int i=x-1;
+//   while(i >= 0){
+//    if (board[i][y]==1)
+//    {
+
+//     return false;
+//    }
+//    i--;
+// }
+//  i=x-1;
+//  int j=y-1;
+//  while (i >= 0 && j < n)
+//  {
+//     if(board[i][j]==1)
+//     {
+       
+//         return false;
+//     }
+//     i-=1;
+//     j-=1;
+//  }
+//  i=x-1;
+//  j=y+1;
+//  while ( i >= 0 && j >= 0)
+//  {
+//     if(board[i][j]==1)
+//     { 
+//         return false;
+//     }
+//     i-=1;
+//     j+=1;
+//  }
+//  return true;
+// }
+// bool queens(int **board,int x,int y,int n)
+// {
+//    if (x==n)
+//    {
+//     cout<<endl;
+//      return true;
+//    }
+//    for (int i = 0; i < n; i++)
+//    {
+//    if(issafe(board,x,i,n))
+//    {
+//     board[x][i]=1;
+//    if (queens(board,x+1,i,n))
+//    {
+//     cout<<"( "<<x<<" , "<<i<<" )"<<endl;
+//     return true;
+//    }
+//    board[x][i]=0;
+//    }
+// }
+//   return false;
+// }
+
+// int main()
+// {
+//   int **board;
+//   int n;
+//   cout<<"Enter the number of rows and columns (same):"<<endl;
+//   cin>>n;
+//   board=new int*[n];
+//   for (int i = 0; i < n; i++)
+//   {
+//     board[i]=new int[n];
+//   }
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < n; j++)
+//     {
+//         board[i][j]=0;
+//     }
+//   }
+// }
+
+//           S U B S E T S
+
+// void subsets(int arr[], int n, int index,
+//              int temp[], int count)
+// {
+//     if (index == n)
+//     {
+//         cout << "{ ";
+//         for (int i = 0; i < count; i++)
+//             cout << temp[i] << " ";
+//         cout << "}\n";
+//         return;
+//     }
+
+//     // Include current element
+//     temp[count] = arr[index];
+//     subsets(arr, n, index + 1, temp, count + 1);
+
+//     // Exclude current element
+//     subsets(arr, n, index + 1, temp, count);
+// }
+
