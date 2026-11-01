@@ -612,6 +612,10 @@ using namespace std;
 //         parent->right=newnode;
 //     }
 // }
+
+
+
+//         ===== Not recommended.Do the case 3 with recursion ================
 // void deletee(int value)
 // {
 //    treeNode* temp=root;
@@ -1226,9 +1230,520 @@ using namespace std;
 
 //     return 0;
 // }
+// bool valid(char temp[], int N)
+// {
+//     for (int i = 0; i < N - 1; i++)
+//     {
+//         for (int j = i + 1; j < N; j++)
+//         {
+//             if (temp[i] == temp[j])
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < N - 1; i++)
+//     {
+//         if ((temp[i] == 'a' || temp[i] == 'e' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u') &&
+//             (temp[i + 1] == 'a' || temp[i + 1] == 'e' || temp[i + 1] == 'i' || temp[i + 1] == 'o' || temp[i + 1] == 'u'))
+//         {
+//             return false;
+//         }
+//     }
+//     int vowelcount = 0;
+//     for (int i = 0; i < N; i++)
+//     {
+//         if (temp[i] == 'a' || temp[i] == 'e' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u')
+//         {
+//             vowelcount++;
+//         }
+//     }
+//     if (vowelcount < 2)
+//     {
+//         return false;
+//     }
+//     if (temp[0] == 'a' || temp[0] == 'e' || temp[0] == 'i' || temp[0] == 'o' || temp[0] == 'u' ||
+//         temp[N - 1] == 'a' || temp[N - 1] == 'e' || temp[N - 1] == 'i' || temp[N - 1] == 'o' || temp[N - 1] == 'u')
+//     {
+//         return false;
+//     }
 
+//     return true;
+
+// }
+// void randomkid(char arr[], char temp[], bool visited[], int n, int N, int index)
+// {
+//     if (index == N)
+//     {
+//         if (valid(temp, N))
+//         {
+//             for (int i = 0; i < N; i++)
+//             {
+//                 cout << temp[i] << " ";
+//             }
+//             cout << endl;
+//         }
+//         return;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             visited[i] = true;
+//             temp[index] = arr[i];
+//             randomkid(arr, temp, visited, n, N, index + 1);
+//             visited[i] = false;
+//         }
+
+//     }
+
+// }
+// int main()
+// {
+//     int n = 10;
+//     int N = 6;
+//     char* arr = new char[n];
+//     char* temp = new char[N];
+//     bool* visited = new bool[n];
+//     for (int i = 0; i < n; i++)
+//     {
+//         visited[i] = false;
+//     }
+//     arr[0] = 'a';
+//     arr[1] = 'b';
+//     arr[2] = 'c';
+//     arr[3] = 'd';
+//     arr[4] = 'e';
+//     arr[5] = 'f';
+//     arr[6] = 'g';
+//     arr[7] = 'h';
+//     arr[8] = 'i';
+//     arr[9] = 'j';
+//     randomkid(arr, temp, visited, n, N, 0);
+//     return 0;
+// }
+// void hamilton(int graph[][4], bool visited[],
+//               int path[], int n, int count)
+// {
+//     if (count == n)
+//     {
+//         for (int i = 0; i < n; i++)
+//             cout << path[i] << " ";
+
+//         cout << endl;
+//         return;
+//     }
+
+//     int last = path[count - 1];
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (graph[last][i] == 1 && !visited[i])
+//         {
+//             visited[i] = true;
+//             path[count] = i;
+
+//             hamilton(graph, visited, path, n, count + 1);
+
+//             visited[i] = false;
+//         }
+//     }
+// }
+
+// int main()
+// {
+//     int graph[4][4] = {
+//         {0, 1, 1, 0},
+//         {1, 0, 1, 1},
+//         {1, 1, 0, 1},
+//         {0, 1, 1, 0}
+//     };
+
+//     bool visited[4] = {false};
+//     int path[4];
+
+//     int start = 0;
+
+//     visited[start] = true;
+//     path[0] = start;
+
+//     hamilton(graph, visited, path, 4, 1);
+
+//     return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// int minimum = 999999;
+
+// void cheapest(int graph[][4], bool visited[],
+//               int n, int current, int count, int cost)
+// {
+//     if (count == n)
+//     {
+//         if (cost < minimum)
+//             minimum = cost;
+
+//         return;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (graph[current][i] != 0 && !visited[i])
+//         {
+//             visited[i] = true;
+
+//             cheapest(graph, visited, n, i,
+//                      count + 1, cost + graph[current][i]);
+
+//             visited[i] = false;
+//         }
+//     }
+// }
+
+// int main()
+// {
+//     int graph[4][4] = {
+//         {0, 10, 15, 20},
+//         {10, 0, 35, 25},
+//         {15, 35, 0, 30},
+//         {20, 25, 30, 0}
+//     };
+
+//     bool visited[4] = {false};
+
+//     int start = 0;
+
+//     visited[start] = true;
+
+//     cheapest(graph, visited, 4, start, 1, 0);
+
+//     if (minimum == 999999)
+//         cout << "No Hamiltonian Path exists";
+//     else
+//         cout << "Minimum cost: " << minimum;
+
+//     return 0;
+// }
+// int getmax(int arr[], int n)
+// {
+//     int max = arr[0];
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (arr[i] > max)
+//         {
+//             max = arr[i];
+//         }
+//     }
+//     return max;
+// }
+// int places(int arr[], int n)
+// {
+//     int count = 0;
+//     int max = getmax(arr, n);
+//     while (max > 0)
+//     {
+//         max = max / 10;
+//         count++;
+//     }
+//     return count;
+// }
+// void countsort(int arr[], int n, int place)
+// {
+//     int* count = new int[10];
+//     for (int i = 0; i < 10; i++)
+//     {
+//         count[i] = 0;
+//     }
+
+//     int* output = new int[n];
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         int digit = (arr[i] / place) % 10;
+//         count[digit]++;
+//     }
+//     for (int i = 1; i < 10; i++)
+//     {
+//         count[i] = count[i] + count[i - 1];
+//     }
+//     for (int i = n - 1; i >= 0; i--)
+//     {
+//         int digit = (arr[i] / place) % 10;
+//         output[--count[digit]] = arr[i];
+//     }
+//     for (int i = 0; i < n; i++)
+//     {
+//         arr[i] = output[i];
+//     }
+//     delete[] count;
+//     delete[] output;
+
+// }
+// void radixsort(int arr[], int n)
+// {
+//     int placess = places(arr, n);
+//     int place = 1;
+//     for (int i = 0; i < placess; i++)
+//     {
+//         countsort(arr, n, place);
+//         place *= 10;
+//     }
+// }
+
+// int main()
+// {
+//     int arr[] = { 5,8,4,6,3,1,9 };
+//     int n = 7;
+//     radixsort(arr, n);
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+
+//     return 0;
+// }
+// void merge(int arr[], int l, int m, int r)
+// {
+//     int n1 = m - l + 1;
+//     int n2 = r - m;
+//     int* la = new int[n1];
+//     int* ra = new int[n2];
+
+//     for (int i = 0; i < n1; i++)
+//     {
+//         la[i]=arr[i+l];
+//     }
+//     for (int i = 0; i < n2; i++)
+//     {
+//         ra[i]=arr[m+i+1];
+//     }
+
+//     int i = 0;int j = 0;int k = l;
+//     while (i < n1 && j < n2)
+//     {
+//         if (la[i] < ra[j])
+//         {
+//             arr[k++]=la[i++];
+
+//         }
+//         else
+//         {
+//             arr[k++]=ra[j++];
+//         }
+//     }
+//     while (i < n1)
+//     {
+//       arr[k++]=la[i++];
+//     }
+//     while (j < n2)
+//     {
+//     arr[k++]=ra[j++];
+//     }
+
+//     delete[] la;
+//     delete[] ra;
+// }
+// void mergesort(int arr[], int l, int r)
+// {
+//     if (l < r)
+//     {
+//         int m = l + (r - l) / 2;
+//         mergesort(arr, l, m);
+//         mergesort(arr, m + 1, r);
+//         merge(arr, l, m, r);
+//     }
+
+// }
+// int main()
+// {
+//    int arr[]={5,4,2,9,1};
+//    mergesort(arr,0,5);
+//    for (int i = 0; i < 5; i++)
+//    {
+//     cout<<arr[i]<<" ";
+//    }
+
+//     return 0;
+// }
+//================== T R E E P A R T 2 ===============
+class nodetree
+{
+public:
+    int data;
+    nodetree* right;
+    nodetree* left;
+    nodetree(int value)
+    {
+        this->data = value;
+        right = nullptr;
+        left = nullptr;
+    }
+};
+
+class tree
+{
+public:
+    nodetree* root;
+    tree()
+    {
+        root = nullptr;
+    }
+    void insert(int value)
+    {
+        nodetree* newnode = new nodetree(value);
+        if (root == nullptr)
+        {
+            root = newnode;
+            newnode->left = nullptr;
+            newnode->right = nullptr;
+            return;
+        }
+        nodetree* temp = root;
+        nodetree* parent = root;
+        while (temp != nullptr)
+        {
+            if (value < temp->data)
+            {
+                parent = temp;
+                temp = temp->left;
+            }
+            else
+            {
+                parent = temp;
+                temp = temp->right;
+            }
+        }
+        if (value < parent->data)
+        {
+            parent->left = newnode;
+            newnode->left = nullptr;
+            newnode->right = nullptr;
+            return;
+        }
+        else
+        {
+            parent->right = newnode;
+            newnode->left = nullptr;
+            newnode->right = nullptr;
+            return;
+        }
+    }
+    nodetree*& getroot()
+    {
+        return root;
+    }
+    void deletee(int value, nodetree*& root)
+    {
+        if (root == nullptr)
+        {
+            return;
+        }
+        nodetree* temp = root;
+        nodetree* parent = nullptr;
+        while (temp != nullptr && temp->data != value)
+        {
+            if (value < temp->data)
+            {
+                parent = temp;
+                temp = temp->left;
+            }
+            else
+            {
+                parent = temp;
+                temp = temp->right;
+            }
+        }
+        if (temp == nullptr)
+        {
+            cout << "no such node exists" << endl;
+            return;
+        }
+        //case 1 and 2:
+        if (temp->left == nullptr || temp->right == nullptr)
+        {
+            if (parent->left == temp)
+            {
+                if (temp->left == nullptr)
+                {
+                    parent->left = temp->right;
+                    delete temp;
+                    return;
+                }
+                else if (temp->right == nullptr)
+                {
+                    parent->left = temp->left;
+                    delete temp;
+                    return;
+                }
+                else
+                {
+                    delete temp;
+                    parent->left = nullptr;
+                    return;
+                }
+            }
+            else if (parent->right == temp)
+            {
+                if (temp->left == nullptr)
+                {
+                    parent->right = temp->right;
+                    delete temp;
+                    return;
+                }
+                else if (temp->right == nullptr)
+                {
+                    parent->right = temp->left;
+                    delete temp;
+                    return;
+                }
+                else
+                {
+                    delete temp;
+                    parent->right = nullptr;
+                    return;
+                }
+            }
+
+        }
+        else
+        {
+            nodetree* inordersucc = temp->right;
+            while (inordersucc->left != nullptr)
+            {
+                inordersucc = inordersucc->left;
+            }
+            temp->data = inordersucc->data;
+            deletee(inordersucc->data, temp->right);
+
+        }
+    }
+};
+void inorder(nodetree* root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
 int main()
 {
-
+    tree t;
+    t.insert(50);
+    t.insert(30);
+    t.insert(70);
+    t.insert(20);
+    t.insert(40);
+    t.insert(60);
+    t.insert(80);
+    inorder(t.getroot());
+    t.deletee(50, t.getroot());
+    cout<<endl;
+    inorder(t.getroot());
     return 0;
 }

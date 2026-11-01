@@ -1,7 +1,5 @@
-bool validpassword(char temp[], int N)
+bool valid(char temp[], int N)
 {
-    int digitcount = 0;
-    int specialsymbol = 0;
     for (int i = 0; i < N - 1; i++)
     {
         for (int j = i + 1; j < N; j++)
@@ -14,41 +12,38 @@ bool validpassword(char temp[], int N)
     }
     for (int i = 0; i < N - 1; i++)
     {
-        if (temp[i] >= '0' && temp[i] <= '9' && temp[i + 1] >= '0' && temp[i + 1] <= '9')
+        if ((temp[i] == 'a' || temp[i] == 'e' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u') &&
+            (temp[i + 1] == 'a' || temp[i + 1] == 'e' || temp[i + 1] == 'i' || temp[i + 1] == 'o' || temp[i + 1] == 'u'))
         {
             return false;
         }
+    }
+    int vowelcount = 0;
+    for (int i = 0; i < N; i++)
+    {
+        if (temp[i] == 'a' || temp[i] == 'e' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u')
+        {
+            vowelcount++;
+        }
+    }
+    if (vowelcount < 2)
+    {
+        return false;
+    }
+    if (temp[0] == 'a' || temp[0] == 'e' || temp[0] == 'i' || temp[0] == 'o' || temp[0] == 'u' ||
+        temp[N - 1] == 'a' || temp[N - 1] == 'e' || temp[N - 1] == 'i' || temp[N - 1] == 'o' || temp[N - 1] == 'u')
+    {
+        return false;
+    }
 
-    }
-    for (int i = 0; i < N; i++)
-    {
-        if (temp[i] >= '0' && temp[i] <= '9')
-        {
-            digitcount++;
-        }
-    }
-    for (int i = 0; i < N; i++)
-    {
-        if (temp[i] == '!' || temp[i] == '@' || temp[i] == '#' || temp[i] == '$' || temp[i] == '%' || temp[i] == '^' || temp[i] == '&' || temp[i] == '*')
-        {
-            specialsymbol++;
-        }
-    }
-    if (digitcount < 2)
-    {
-        return false;
-    }
-    if (specialsymbol == 0)
-    {
-        return false;
-    }
     return true;
+
 }
-void password(char arr[], char temp[], int n, int N, int index)
+void randomkid(char arr[], char temp[], bool visited[], int n, int N, int index)
 {
     if (index == N)
     {
-        if (validpassword(temp, N))
+        if (valid(temp, N))
         {
             for (int i = 0; i < N; i++)
             {
@@ -58,10 +53,17 @@ void password(char arr[], char temp[], int n, int N, int index)
         }
         return;
     }
-    for (int i = index; i < n; i++)
+
+    for (int i = 0; i < n; i++)
     {
-        temp[index] = arr[i];
-        password(arr, temp, n, N, i + 1);
+        if (!visited[i])
+        {
+            visited[i] = true;
+            temp[index] = arr[i];
+            randomkid(arr, temp, visited, n, N, index + 1);
+            visited[i] = false;
+        }
+
     }
 
 }
@@ -71,11 +73,16 @@ int main()
     int N = 4;
     char* arr = new char[n];
     char* temp = new char[N];
-    arr[0] = '0';
-    arr[1] = '2';
-    arr[2] = 'v';
-    arr[3] = '^';
-    arr[4] = 'm';
-    password(arr, temp, n, N, 0);
+    bool* visited = new bool[n];
+    for (int i = 0; i < n; i++)
+    {
+        visited[i] = false;
+    }
+    arr[0] = 'a';
+    arr[1] = 'b';
+    arr[2] = 'c';
+    arr[3] = 'd';
+    arr[4] = 'e';
+    randomkid(arr, temp, visited, n, N, 0);
     return 0;
 }
