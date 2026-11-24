@@ -67,7 +67,7 @@ private:
             }
 
             if (largest == i)
-                break;
+                return;
 
             swapVal(arr[i], arr[largest]);
 
